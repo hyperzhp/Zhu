@@ -1,0 +1,437 @@
+\documentclass[11pt,a4paper]{article}
+
+% -------------------------
+% Packages
+% -------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{graphicx}
+\usepackage{float}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\usepackage{enumitem}
+
+% -------------------------
+% Document info
+% -------------------------
+\title{
+    \textbf{Best Bike Paths (BBP)}\\
+    \large Requirement Analysis and Specification Document
+}
+
+\author{
+    Your Name
+}
+
+\date{\today}
+
+% -------------------------
+% Document
+% -------------------------
+\begin{document}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+% =================================================
+\section{Introduction}
+
+\subsection{Purpose}
+The purpose of this document is to provide a Requirement Analysis and Specification for the Best Bike Paths (BBP) system.
+
+BBP is a software system designed to support cyclists in recording their personal biking activities and in managing the route information about bike paths. The system allows users to manually insert information about bike paths, such as their status and the presence of obstacles, and to visualize possible bike paths between a origin starting point and a destination on a map.
+
+This document defines the goals, assumptions, and requirements of the BBP system. It serves as a contractual reference between stakeholders and developers and as a baseline for subsequent design and implementation activities.
+
+\subsubsection{Goals}
+%Describe the main goals of the system
+G1: The user wants to record a biking trip, in order to keep track of personal biking activities.
+
+G2: The user wants to review previously recorded biking trips, in order to recall and organize past experiences.
+
+G3: The user wants to visualize possible biking paths between a specified origin and destination, in order to support route selection.
+
+G4: The user wants to manually add information about a bike path based on personal experience, in order to document relevant conditions and obstacles.
+
+G5: The user wants to decide whether the information added about a bike path should be made visible to other users, in order to control its sharing.
+\subsection{Scope}
+% Describe the application domain
+The scope of the document is limited to the functionalitiThis section describes the application domain of the Best Bike Paths (BBP) system by distinguishing between phenomena that occur in the real world and those that are shared between the system and its users.
+
+The scope of this document is limited to the functionalities assigned to single-student groups, namely the recording of personal biking trips, the manual insertion of information about bike paths, and the visualization of bike paths between a specified origin and destination.
+Advanced functionalities such as automatic data collection, aggregation of reports from multiple users, and conflict resolution are explicitly excluded from the scope.
+\subsubsection{World Phenomena}
+% Describe phenomena outside the system control
+World phenomena are events and conditions that occur independently of the BBP system and are not directly controlled by it. These phenomena belong to the environment in which the system operates.
+
+\begin{itemize}
+    \item WP1: The user starting and stopping the recording of a biking trip through the system[cite: 1441].
+    \item WP2: The user manually inserting information about a bike path, including its status and possible obstacles[cite: 1447].
+    \item WP3: The system storing recorded biking trips[cite: 1441].
+    \item WP4: The system displaying recorded trips and bike paths on a map[cite: 1455].
+    \item WP5: The user specifying an origin and a destination to visualize possible biking paths[cite: 1455].
+    \item WP6: The user deciding whether the information added about a bike path is visible to other users[cite: 1453].
+\end{itemize}
+
+\subsubsection{Shared Phenomena}
+% Describe phenomena shared between users and the system
+Shared phenomena are events and information that are observable and managed both by the users and the BBP system. These phenomena define the interaction between the system and its environment.
+
+\begin{itemize}
+    \item SP1: The user signals the system to start and stop the recording of a trip.
+    \item SP2: The system retrieves meteorological data from an external weather service to enrich trip records.
+    \item SP3: The user manually inputs street names, path status, and obstacle descriptions into the system.
+    \item SP4: The user sets a specific trip or path report as "publishable" or "private" within the application.
+    \item SP5: The system provides the user with trip statistics, including total distance and average speed.
+    \item SP6: The user inputs an origin and a destination to request path options.
+    \item SP7: The system visualizes bike paths on a map, displaying their computed scores to the user.
+    \item SP8: The system provides a list/inventory of the user's previously recorded trips for review.
+\end{itemize}
+
+\subsection{Definitions, Acronyms, Abbreviations}
+\begin{itemize}
+    \item BBP: Best Bike Paths.
+    \item User: An individual who interacts with the BBP system to record biking activities and manage bike path information.
+    \item Trip: A biking performed by a user and recorded through the BBP system.
+    \item Bike Path: A designated route for biking, which can be recorded and managed within the BBP system.
+    \item Publishable Information: Information about bike paths that users can choose to share with others through the BBP system.
+\end{itemize}
+\subsection{Revision History}
+
+\begin{longtable}{lll}
+    \toprule
+    Version & Date   & Description     \\
+    \midrule
+    1.0     & \today & Initial version \\
+    \bottomrule
+\end{longtable}
+
+\subsection{Reference Documents}
+\begin{itemize}
+    \item Sotfware Engineering 2 - Requirement Engineering and Design Assignment Description
+    \item IEEE/ISO/IEC 29148-2018 - Systems and software engineering -- Life cycle processes -- Requirements engineering
+\end{itemize}
+\subsection{Document Structure}
+This document is organized as follows.
+
+Section 2 provides an overall description of the BBP system, including scenarios, user characteristics, and domain assumptions.
+
+Section 3 detailes the functional and non-functional requirements of the system.
+
+Section 4 presents a formal analysis of selected aspects of the system using Alloy.
+
+Section 5 reports the effort spent on this document.
+% =================================================
+\section{Overall Description}
+
+\subsection{Product Perspective}
+% Scenarios and domain model description
+
+\subsubsection{Scenarios}
+
+% Scenario 1: Focuses on the "Recording of personal trips" functionality [cite: 1463]
+\paragraph{Scenario 1: User records a personal biking trip}
+User Alice is about to start her daily commute to work and wants to track her performance. She opens the Best Bike Paths (BBP) application on her smartphone and logs in. She navigates to the "My Trips" section and taps the "Start Recording" button. As she cycles, the system tracks her location via GPS. Once she arrives at her office, she taps "Stop Recording". The system automatically retrieves the current weather conditions (e.g., temperature and wind speed) from an external service and saves the trip [cite: 1441-1443]. Alice can now view the summary of her ride, including total distance and average speed, stored in her personal history.
+
+% Scenario 2: Focuses on "The insertion of publishable information in manual mode" [cite: 1464]
+\paragraph{Scenario 2: User manually inserts path information}
+User Bob is riding through "Oak Street" and notices that the bike lane is full of potholes, making it dangerous. Later, when he is safe at home, he decides to report this to the community. He logs into BBP and selects the "Add Path Info" feature. He manually enters the street name "Oak Street" and sets the status to "Requires Maintenance"[cite: 1444, 1447]. He also adds a note specifying "Deep potholes near the intersection." He decides to make this information public so other cyclists can be warned, toggling the "Publishable" option[cite: 1453]. The system saves this report and associates it with the specific path location.
+
+% Scenario 3: Focuses on "The visualization of the information about possible paths..." [cite: 1465]
+\paragraph{Scenario 3: User visualizes bike paths between origin and destination}
+User Charlie wants to bike from his home to the central train station but is unsure of the safest route. He opens the BBP application and enters his home address as the "Origin" and the station address as the "Destination"[cite: 1455]. The system searches for existing bike paths connecting these two points. It finds two possible routes and displays them on a map. The system highlights the first route as the recommended option because it has a higher score, calculated based on recent user reports indicating "Optimal" status [cite: 1456-1457]. Charlie selects this route to view the details before starting his ride.
+
+\subsubsection{Domain Model}
+
+The domain model describes the main concepts involved in the Best Bike Paths (BBP) application domain and the relationships among them.
+
+A \textit{User} represents a person interacting with the system to record biking trips and to manage information about bike paths.
+
+A \textit{Trip} represents a biking activity performed by a user and recorded through the system. Each trip is associated with exactly one user and refers to a specific bike path.
+
+A \textit{BikePath} represents a sequence of streets or tracks suitable for biking, possibly identified by an origin and a destination. A bike path may be associated with multiple trips and may be described by multiple pieces of information.
+
+\textit{PathInformation} represents information manually provided by a user about a bike path, such as its general condition or the presence of obstacles. Each piece of path information is associated with exactly one bike path and is created by a user.
+
+Figure~X illustrates the domain model and the relationships among these concepts.
+
+\subsection{Product Functions}
+% High-level system functions
+
+The BBP system provides a set of functionalities aimed at supporting individual cyclists in managing their biking activities and route-related information.
+
+The main functions of the system include:
+\begin{itemize}
+    \item Recording personal biking trips initiated and terminated by the user.
+    \item Storing recorded trips and associating them with the user profile.
+    \item Allowing users to manually insert information about bike paths based on personal experience.
+    \item Managing the visibility of inserted bike path information according to user preferences.
+    \item Visualizing possible biking paths between a specified origin and destination on a map.
+\end{itemize}
+
+The BBP system does not perform automatic data collection, route optimization, or aggregation of information from multiple users, as these functionalities are outside the scope of the current system.
+
+\subsection{User Characteristics}
+
+The intended users of the BBP system are individual cyclists with basic familiarity with mobile or web-based applications.
+
+Users are expected to:
+\begin{itemize}
+    \item Be able to interact with graphical user interfaces.
+    \item Manually provide information related to bike paths based on personal experience.
+    \item Understand basic map representations, including origin and destination points.
+\end{itemize}
+
+No advanced technical skills are required. The system is designed for occasional and personal use rather than professional or large-scale data analysis.
+
+\subsection{Assumptions, Dependencies and Constraints}
+
+The BBP system relies on the following assumptions:
+\begin{itemize}
+    \item Users provide accurate and truthful information when recording trips or adding path information.
+    \item The device used by the user is capable of displaying map-based information.
+    \item Network connectivity is available when accessing functionalities that require data storage or visualization.
+\end{itemize}
+
+The system depends on external map services for the visualization of bike paths.
+
+Constraints include:
+\begin{itemize}
+    \item The system supports only single-user interaction.
+    \item All path information is manually inserted by users.
+    \item Advanced analytics, automatic route computation, and collaborative features are excluded.
+\end{itemize}
+
+% =================================================
+\section{Specific Requirements}
+
+\subsection{External Interface Requirements}
+
+\subsubsection{User Interfaces}
+
+\subsubsection{Hardware Interfaces}
+
+\subsubsection{Software Interfaces}
+
+\subsubsection{Communication Interfaces}
+
+\subsection{Functional Requirements}
+% Use cases, sequence diagrams, activity diagrams
+\subsubsection{Use Cases}
+
+% UC1: Record Trip
+% Covers the requirement: "The recording of personal trips." [cite: 1463]
+% Includes weather data retrieval [cite: 1443]
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC1: Record a Biking Trip}                                                   \\ \hline
+    \textbf{Actors}          & Registered User, External Weather Service                                            \\ \hline
+    \textbf{Entry Condition} & The user is logged into the BBP application, and the device's GPS is active.         \\ \hline
+    \textbf{Event Flow}      &
+    1. The User navigates to the "Trip" section and presses "Start Recording". \newline
+    2. The System begins tracking the user's location and duration. \newline
+    3. The User rides their bike to the destination. \newline
+    4. The User presses "Stop Recording". \newline
+    5. The System calculates trip statistics (distance, average speed)[cite: 1442]. \newline
+    6. The System requests current weather data from the External Weather Service. \newline
+    7. The System saves the trip with statistics and weather data to the user's history. \newline
+    8. The System displays the trip summary to the User.                                                            \\ \hline
+    \textbf{Exit Condition}  & The trip is successfully stored in the database and visible in the user's history.   \\ \hline
+    \textbf{Exceptions}      &
+    (6) \textbf{Weather Service Unavailable}: If the external service does not respond, the System saves the trip without weather data and notifies the user. \newline
+    (2) \textbf{GPS Signal Lost}: If GPS is lost during the ride, the System pauses recording and prompts the user. \\ \hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+% UC2: Manual Info Insertion
+% Covers the requirement: "The insertion of publishable information in manual mode." [cite: 1464]
+% Covers specific fields (street name, status) [cite: 1447]
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC2: Insert Path Information (Manual)}                                                              \\ \hline
+    \textbf{Actors}          & Registered User                                                                                             \\ \hline
+    \textbf{Entry Condition} & The user is logged into the BBP application.                                                                \\ \hline
+    \textbf{Event Flow}      &
+    1. The User selects "Add Path Info". \newline
+    2. The User manually enters the name of the street(s) included in the path[cite: 1447]. \newline
+    3. The User selects the status of the path (e.g., optimal, sufficient, requires maintenance)[cite: 1444]. \newline
+    4. The User optionally describes obstacles (e.g., potholes)[cite: 1444]. \newline
+    5. The User toggles the visibility setting (Publishable or Private)[cite: 1453]. \newline
+    6. The User confirms the submission. \newline
+    7. The System validates the input and stores the information.                                                                          \\ \hline
+    \textbf{Exit Condition}  & The path information is stored. If marked "Publishable", it becomes available for system-wide path scoring. \\ \hline
+    \textbf{Exceptions}      &
+    (2) \textbf{Invalid Street Name}: The System cannot verify the street name against the map database and asks the User to correct it.   \\ \hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+% UC3: Visualize Paths
+% Covers the requirement: "The visualization of the information about possible paths..." [cite: 1465]
+% Covers origin/destination and scoring [cite: 1455-1457]
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC3: Visualize Bike Paths}                                                   \\ \hline
+    \textbf{Actors}          & User (Registered or Unregistered) [cite: 1454]                                       \\ \hline
+    \textbf{Entry Condition} & The user has the application open on the map view.                                   \\ \hline
+    \textbf{Event Flow}      &
+    1. The User specifies an "Origin" and a "Destination"[cite: 1455]. \newline
+    2. The User requests to visualize paths. \newline
+    3. The System computes available paths between the points. \newline
+    4. The System calculates a score for each path based on path status and effectiveness[cite: 1457]. \newline
+    5. The System displays the paths on the map, highlighting the one with the highest score. \newline
+    6. The User browses the path details.                                                                           \\ \hline
+    \textbf{Exit Condition}  & The best available bike paths are visualized on the map.                             \\ \hline
+    \textbf{Exceptions}      &
+    (3) \textbf{No Path Found}: The System cannot find a viable bike path between the points and notifies the User. \\ \hline
+\end{longtable}
+
+% UC4: User Registration
+% Necessary because only "Registered users" can record trips 
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC4: User Registration}                                        \\ \hline
+    \textbf{Actors}          & Unregistered User                                                      \\ \hline
+    \textbf{Entry Condition} & The user has installed the application but does not have an account.   \\ \hline
+    \textbf{Event Flow}      &
+    1. The User launches the application and selects "Sign Up". \newline
+    2. The User enters required details (email, password, username). \newline
+    3. The System validates the input format. \newline
+    4. The System creates a new account in the database. \newline
+    5. The System confirms successful registration and logs the user in.                              \\ \hline
+    \textbf{Exit Condition}  & A new user profile is created, and the user is authenticated.          \\ \hline
+    \textbf{Exceptions}      &
+    (3) \textbf{Email Already Exists}: The System notifies the user that the email is already in use. \\ \hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+% UC5: User Login
+% Standard functionality found in the example RASD 
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC5: User Login}                                                                                \\ \hline
+    \textbf{Actors}          & User                                                                                                    \\ \hline
+    \textbf{Entry Condition} & The user opens the application and is not authenticated.                                                \\ \hline
+    \textbf{Event Flow}      &
+    1. The User enters email and password. \newline
+    2. The User presses the "Login" button. \newline
+    3. The System verifies the credentials against the database. \newline
+    4. The System grants access and redirects the User to the main dashboard.                                                          \\ \hline
+    \textbf{Exit Condition}  & The User is authenticated and can access restricted features (e.g., Record Trip).                       \\ \hline
+    \textbf{Exceptions}      &
+    (3) \textbf{Invalid Credentials}: The System displays an error message ("Incorrect email or password") and asks the user to retry. \\ \hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+% UC6: View Trip History
+% Covers the requirement to "keep track of their cycling activities" 
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC6: View Trip History}                                                                   \\ \hline
+    \textbf{Actors}          & Registered User                                                                                   \\ \hline
+    \textbf{Entry Condition} & The user is logged in and has previously recorded at least one trip.                              \\ \hline
+    \textbf{Event Flow}      &
+    1. The User navigates to the "My Trips" (History) section. \newline
+    2. The System retrieves the list of past trips associated with the user account. \newline
+    3. The System displays the list, showing summary data (date, distance) for each trip. \newline
+    4. The User selects a specific trip to view details. \newline
+    5. The System displays detailed statistics (average speed, duration, weather conditions) for the selected trip.              \\ \hline
+    \textbf{Exit Condition}  & The User successfully reviews their past cycling activities.                                      \\ \hline
+    \textbf{Exceptions}      &
+    (2) \textbf{No History Available}: If the user has no recorded trips, the System displays a "No trips recorded yet" message. \\ \hline
+\end{longtable}
+
+\subsection{Performance Requirements}
+
+The BBP system shall provide responses to user interactions within a reasonable time frame.
+
+In particular:
+\begin{itemize}
+    \item Trip recording activation and termination shall be acknowledged within a few seconds.
+    \item Visualization of bike paths shall be completed within an acceptable delay, depending on network conditions.
+\end{itemize}
+
+
+\subsection{Design Constraints}
+
+\subsubsection{Standards Compliance}
+
+\subsubsection{Hardware Limitations}
+
+\subsubsection{Other Constraints}
+
+\subsection{Software System Attributes}
+
+\subsubsection{Reliability}
+The BBP system shall ensure that recorded trips and inserted path information are not lost once confirmed by the user.
+
+\subsubsection{Availability}
+The system shall be available during normal operation times, subject to network connectivity and external service availability.
+
+\subsubsection{Security}
+The system shall restrict access to personal data and ensure that only authenticated users can access their recorded trips and private path information.
+
+\subsubsection{Maintainability}
+The BBP system shall be designed to allow future extensions, such as additional path attributes or enhanced visualization features.
+
+\subsubsection{Portability}
+The system shall be deployable on commonly used platforms supporting web or mobile applications.
+
+\subsubsection{Reliability}
+
+\subsubsection{Availability}
+
+\subsubsection{Security}
+
+\subsubsection{Maintainability}
+
+\subsubsection{Portability}
+
+% =================================================
+\section{Formal Analysis Using Alloy}
+
+Formal analysis was conducted using the Alloy modeling language to validate critical aspects of the BBP system requirements.
+
+In particular, the lifecycle of a \textit{Trip} was modeled using a discrete time abstraction. The states \textit{Idle}, \textit{Recording}, and \textit{Recorded} were defined, together with constraints restricting allowed state transitions.
+
+An assertion was introduced to verify that a trip cannot reach the \textit{Recorded} state without previously being in the \textit{Recording} state. The assertion was checked using Alloy within a bounded scope, and no counterexample was found, indicating that the specified lifecycle constraints are consistent.
+
+Figure~Y illustrates an instance generated by Alloy that represents a valid execution trace of a trip lifecycle.
+
+% Alloy model and assertions
+
+% =================================================
+\section{Effort Spent}
+
+\begin{longtable}{lll}
+    \toprule
+    Name      & Task             & Hours \\
+    \midrule
+    Your Name & RASD preparation & --    \\
+    \bottomrule
+\end{longtable}
+
+% =================================================
+\section{References}
+
+\end{document}
