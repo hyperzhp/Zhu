@@ -1,0 +1,126 @@
+\subsection{Product Perspective}
+
+The Best Bike Paths (BBP) system is a standalone mobile application that interacts with external services (Maps and Weather) to provide value to individual cyclists. The system manages the lifecycle of two main entities: the biking \textbf{Trip} and the manually inserted \textbf{Path Information}.
+\subsubsection{Scenarios}
+
+% Scenario 1: Focuses on the "Recording of personal trips" functionality 
+\paragraph{Scenario 1: User records a personal biking trip}
+User Alice is about to start her daily commute to work and wants to track her performance. She opens the Best Bike Paths (BBP) application on her smartphone and logs in. She navigates to the "My Trips" section and taps the "Start Recording" button. As she cycles, the system tracks her location via GPS. Once she arrives at her office, she taps "Stop Recording". The system automatically retrieves the current weather conditions (e.g., temperature and wind speed) from an external service and saves the trip . Alice can now view the summary of her ride, including total distance and average speed, stored in her personal history.
+
+% Scenario 2: Focuses on "The insertion of publishable information in manual mode" 
+\paragraph{Scenario 2: User manually inserts path information}
+User Bob is riding through "Oak Street" and notices that the bike lane is full of potholes, making it dangerous. Later, when he is safe at home, he decides to report this to the community. He logs into BBP and selects the "Add Path Info" feature. He manually enters the street name "Oak Street" and sets the status to "Requires Maintenance". He also adds a note specifying "Deep potholes near the intersection." He decides to make this information public so other cyclists can be warned, toggling the "Publishable" option. The system saves this report and associates it with the specific path location.
+
+% Scenario 3: Focuses on "The visualization of the information about possible paths..." 
+\paragraph{Scenario 3: User visualizes bike paths between origin and destination}
+User Charlie wants to bike from his home to the central train station but is unsure of the safest route. He opens the BBP application and enters his home address as the "Origin" and the station address as the "Destination". The system searches for existing bike paths connecting these two points. It finds two possible routes and displays them on a map. The system highlights the first route as the recommended option because it has a higher score, calculated based on recent user reports indicating "Optimal" status . Charlie selects this route to view the details before starting his ride.
+
+\subsubsection{Domain Model}
+The Domain Model shown in Figure \ref{fig:domain_model} illustrates the static structure of the BBP system, highlighting the complexity of data management regarding trips and path reports.
+
+The model is structured around the following key concepts:
+
+\begin{itemize}
+    \item \textbf{User}: The active agent in the system. Each user maintains a collection of \texttt{Trips} and authored \texttt{PathInformation}.
+
+    \item \textbf{Trip and Geolocation}: A \texttt{Trip} is not merely a summary record; it is modeled as a composite entity containing a sequence of \texttt{GeoPoints} (representing the raw GPS trace) and a \texttt{WeatherData} object (representing the meteorological context captured at the time of the trip).
+
+    \item \textbf{Path Information Hierarchy}: To distinguish between different types of user contributions, \texttt{PathInformation} is modeled as an abstract class specialized into:
+          \begin{itemize}
+              \item \textbf{StatusReport}: For assessing the general condition of the path (e.g., \texttt{OPTIMAL}, \texttt{SUFFICIENT}).
+              \item \textbf{ObstacleReport}: For flagging specific hazards (e.g., potholes).
+          \end{itemize}
+
+    \item \textbf{Bike Path}: Represents the logical road segment, which is geometrically defined by a set of coordinates.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{domain_model_advanced.png}
+    \caption{Detailed Domain Model Class Diagram}
+    \label{fig:domain_model}
+\end{figure}
+
+
+
+\subsubsection{Trip Lifecycle}
+The recording of a trip is the central functionality of the application. Figure \ref{fig:state_trip} illustrates the state transitions of a Trip entity.
+The process begins in the \textit{Idle} state. When the user initiates a recording, the system transitions to the \textit{Recording} state, utilizing GPS sensors. The user may temporarily \textit{Pause} the activity. Upon completion, the system enters a transient state to fetch meteorological data from an external provider before permanently persisting the trip in the \textit{Saved} history.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{state_trip.png}
+    \caption{State Diagram: Lifecycle of a Biking Trip}
+    \label{fig:state_trip}
+\end{figure}
+
+\subsubsection{Path Information Visibility}
+Users can contribute to the system by reporting path conditions. To ensure privacy and user control, the system maintains a visibility state for each report.
+As shown in Figure \ref{fig:state_info}, a report can be stored as \textit{Private} (visible only to the creator) or \textit{Published} (shared with the community). The user can toggle this state at any time after creation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{state_info.png}
+    \caption{State Diagram: Path Information Visibility States}
+    \label{fig:state_info}
+\end{figure}
+
+\subsection{Product Functions}
+% High-level system functions
+
+The BBP system provides a set of functionalities aimed at supporting individual cyclists in managing their biking activities and route-related information.
+
+The main functions of the system include:
+\begin{itemize}
+    \item Recording personal biking trips initiated and terminated by the user.
+    \item Storing recorded trips and associating them with the user profile.
+    \item Allowing users to manually insert information about bike paths based on personal experience.
+    \item Managing the visibility of inserted bike path information according to user preferences.
+    \item Visualizing possible biking paths between a specified origin and destination on a map.
+\end{itemize}
+
+The BBP system does not perform automatic data collection, route optimization, or aggregation of information from multiple users, as these functionalities are outside the scope of the current system.
+
+\subsection{User Characteristics}
+
+The intended users of the BBP system are individual cyclists with basic familiarity with mobile or web-based applications.
+
+Users are expected to:
+\begin{itemize}
+    \item Be able to interact with graphical user interfaces.
+    \item Manually provide information related to bike paths based on personal experience.
+    \item Understand basic map representations, including origin and destination points.
+\end{itemize}
+
+No advanced technical skills are required. The system is designed for occasional and personal use rather than professional or large-scale data analysis.
+
+\subsection{Assumptions, Dependencies and Constraints}
+
+\subsubsection{Domain Assumptions}
+The correct functioning of the BBP system relies on the following assumptions about the domain and the operational environment. If these assumptions do not hold, the system may not be able to fulfill its requirements.
+
+\begin{itemize}
+    \item \textbf{D1 - GPS Availability and Accuracy}: It is assumed that the Global Positioning System (GPS) or GNSS is available and provides geolocation coordinates with an accuracy sufficient to distinguish between adjacent streets (typically within 10-15 meters).
+
+    \item \textbf{D2 - Map Service Reliability}: It is assumed that the external Map Service Provider (e.g., Google Maps, OpenStreetMap) provides up-to-date and topologically correct representations of the road network. The system assumes that if a coordinate exists on the map, the corresponding physical location allows passage.
+
+    \item \textbf{D3 - Network Connectivity}: While the recording can happen offline, it is assumed that the user's device has at least intermittent internet connectivity (4G/5G/Wi-Fi) to synchronize data, retrieve weather information, and load map tiles.
+
+    \item \textbf{D4 - User Trustworthiness}: It is assumed that users act cooperatively and provide truthful information when manually inserting path status or reporting obstacles. The system cannot physically verify the existence of a pothole reported by a user.
+
+    \item \textbf{D5 - External Weather Service}: It is assumed that the third-party Weather Service API is operational and maintains historical or real-time weather data for the locations where trips occur.
+
+    \item \textbf{D6 - Device Capability}: It is assumed that the user's smartphone has sufficient battery capacity to maintain GPS tracking and screen activity for the duration of an average biking trip (approx. 1-2 hours).
+\end{itemize}
+
+\subsubsection{Dependencies}
+The BBP system depends on:
+\begin{itemize}
+    \item \textbf{External Map APIs}: For rendering maps and calculating routes.
+    \item \textbf{Weather Data Providers}: For enriching trip records.
+    \item \textbf{App Stores}: For distribution and updates of the mobile application.
+\end{itemize}
+
+
+
+% =================================================

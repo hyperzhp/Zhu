@@ -1,0 +1,86 @@
+\subsection{Purpose}
+The purpose of this document is to provide a Requirement Analysis and Specification for the Best Bike Paths (BBP) system.
+
+BBP is a software system designed to support cyclists in recording their personal biking activities and in managing the route information about bike paths. The system allows users to manually insert information about bike paths, such as their status and the presence of obstacles, and to visualize possible bike paths between a origin starting point and a destination on a map.
+
+This document defines the goals, assumptions, and requirements of the BBP system. It serves as a contractual reference between stakeholders and developers and as a baseline for subsequent design and implementation activities.
+
+\subsubsection{Goals}
+%Describe the main goals of the system
+G1: The user wants to record a biking trip, in order to keep track of personal biking activities.
+
+G2: The user wants to review previously recorded biking trips, in order to recall and organize past experiences.
+
+G3: The user wants to visualize possible biking paths between a specified origin and destination, in order to support route selection.
+
+G4: The user wants to manually add information about a bike path based on personal experience, in order to document relevant conditions and obstacles.
+
+G5: The user wants to decide whether the information added about a bike path should be made visible to other users, in order to control its sharing.
+\subsection{Scope}
+% Describe the application domain
+The scope of the document is limited to the functionalitiThis section describes the application domain of the Best Bike Paths (BBP) system by distinguishing between phenomena that occur in the real world and those that are shared between the system and its users.
+
+The scope of this document is limited to the functionalities assigned to single-student groups, namely the recording of personal biking trips, the manual insertion of information about bike paths, and the visualization of bike paths between a specified origin and destination.
+Advanced functionalities such as automatic data collection, aggregation of reports from multiple users, and conflict resolution are explicitly excluded from the scope.
+\subsubsection{World Phenomena}
+% Describe phenomena outside the system control
+World phenomena are events and conditions that occur independently of the BBP system and are not directly controlled by it. These phenomena belong to the environment in which the system operates.
+
+\begin{itemize}
+    \item WP1: The user starting and stopping the recording of a biking trip through the system.
+    \item WP2: The user manually inserting information about a bike path, including its status and possible obstacles.
+    \item WP3: The system storing recorded biking trips.
+    \item WP4: The system displaying recorded trips and bike paths on a map.
+    \item WP5: The user specifying an origin and a destination to visualize possible biking paths.
+    \item WP6: The user deciding whether the information added about a bike path is visible to other users.
+\end{itemize}
+
+\subsubsection{Shared Phenomena}
+% Describe phenomena shared between users and the system
+Shared phenomena are events and information that are observable and managed both by the users and the BBP system. These phenomena define the interaction between the system and its environment.
+
+\begin{itemize}
+    \item SP1: The user signals the system to start and stop the recording of a trip.
+    \item SP2: The system retrieves meteorological data from an external weather service to enrich trip records.
+    \item SP3: The user manually inputs street names, path status, and obstacle descriptions into the system.
+    \item SP4: The user sets a specific trip or path report as "publishable" or "private" within the application.
+    \item SP5: The system provides the user with trip statistics, including total distance and average speed.
+    \item SP6: The user inputs an origin and a destination to request path options.
+    \item SP7: The system visualizes bike paths on a map, displaying their computed scores to the user.
+    \item SP8: The system provides a list/inventory of the user's previously recorded trips for review.
+\end{itemize}
+
+\subsection{Definitions, Acronyms, Abbreviations}
+\begin{itemize}
+    \item BBP: Best Bike Paths.
+    \item User: An individual who interacts with the BBP system to record biking activities and manage bike path information.
+    \item Trip: A biking performed by a user and recorded through the BBP system.
+    \item Bike Path: A designated route for biking, which can be recorded and managed within the BBP system.
+    \item Publishable Information: Information about bike paths that users can choose to share with others through the BBP system.
+\end{itemize}
+\subsection{Revision History}
+
+\begin{longtable}{lll}
+    \toprule
+    Version & Date   & Description     \\
+    \midrule
+    1.0     & \today & Initial version \\
+    \bottomrule
+\end{longtable}
+
+\subsection{Reference Documents}
+\begin{itemize}
+    \item Sotfware Engineering 2 - Requirement Engineering and Design Assignment Description
+    \item IEEE/ISO/IEC 29148-2018 - Systems and software engineering -- Life cycle processes -- Requirements engineering
+\end{itemize}
+\subsection{Document Structure}
+This document is organized as follows.
+
+Section 2 provides an overall description of the BBP system, including scenarios, user characteristics, and domain assumptions.
+
+Section 3 detailes the functional and non-functional requirements of the system.
+
+Section 4 presents a formal analysis of selected aspects of the system using Alloy.
+
+Section 5 reports the effort spent on this document.
+% =================================================

@@ -1,0 +1,351 @@
+\subsection{External Interface Requirements}
+\subsection{External Interface Requirements}
+
+\subsubsection{User Interfaces}
+The user interface of the BBP application shall be designed to be intuitive, responsive, and accessible, considering that users might interact with it while outdoors.
+\begin{itemize}
+    \item \textbf{Dashboard Map View}: The main screen shall display a map centered on the user's current location, showing nearby bike paths and their status codes (e.g., Green for optimal, Red for maintenance required).
+    \item \textbf{Trip Recording Interface}: A simplified high-contrast screen displaying real-time metrics (Duration, Distance, Current Speed) with large "Pause" and "Stop" buttons to facilitate interaction during stops.
+    \item \textbf{Reporting Form}: An input form for manually adding path information, featuring dropdown menus for "Status" and "Obstacles" to minimize typing effort.
+    \item \textbf{Trip History}: A chronological list of past trips, allowing users to tap and view detailed statistics and weather data.
+\end{itemize}
+All UI components shall adhere to the Material Design (Android) and Human Interface Guidelines (iOS) standards.
+
+\subsubsection{Hardware Interfaces}
+The system requires direct interaction with the following hardware components of the mobile device:
+\begin{itemize}
+    \item \textbf{GPS/GNSS Sensor}: The system shall interface with the device's location services to obtain geolocation coordinates (latitude, longitude, altitude) with a minimum accuracy of 10 meters.
+    \item \textbf{Storage}: The system shall access the device's internal storage to cache map data and temporarily save trip logs before synchronization.
+    \item \textbf{Network Interface}: The system shall utilize the device's Wi-Fi or Cellular Data (4G/5G) interface to communicate with the backend server and external APIs.
+\end{itemize}
+
+\subsubsection{Software Interfaces}
+\begin{itemize}
+    \item \textbf{Map Service API}: The system shall interface with an external map provider (e.g., OpenStreetMap or Google Maps API) to render map tiles and perform geocoding.
+    \item \textbf{Weather Service API}: The system shall communicate with a third-party meteorological service (e.g., OpenWeatherMap) via REST API to retrieve weather conditions based on timestamp and location.
+    \item \textbf{Mobile Operating System}: The application shall be compatible with Android 12+ and iOS 15+, utilizing native OS APIs for background location tracking.
+\end{itemize}
+
+\subsubsection{Communication Interfaces}
+\begin{itemize}
+    \item \textbf{Protocol}: All client-server communication shall be encrypted using TLS 1.3 (HTTPS) to ensure data confidentiality.
+    \item \textbf{Data Format}: Data exchange regarding trips, paths, and user profiles shall be formatted in JSON (JavaScript Object Notation).
+\end{itemize}
+\subsubsection{User Interfaces}
+The BBP system shall provide a mobile application interface for cyclists. Key screens include:
+\begin{itemize}
+    \item \textbf{Dashboard/Map View}: The main screen displaying the user's current location and nearby bike paths on a map.
+    \item \textbf{Trip Recording Interface}: Displays real-time statistics (speed, duration) and controls to start/stop recording.
+    \item \textbf{Trip History}: A list of previously recorded trips with summary data.
+    \item \textbf{Path Information Form}: A form to manually insert data about a path (status, obstacles) and set visibility.
+\end{itemize}
+The UI shall be designed to be intuitive and usable on touch-screen devices.
+
+\subsubsection{Hardware Interfaces}
+The system requires interaction with the following hardware components of the user's mobile device:
+\begin{itemize}
+    \item \textbf{GPS Receiver}: To track the user's geolocation (latitude, longitude) during trip recording.
+    \item \textbf{Touch Screen}: For user input and interaction.
+    \item \textbf{Network Interface}: (4G/5G/Wi-Fi) To communicate with the backend server and external services.
+\end{itemize}
+
+\subsubsection{Software Interfaces}
+\begin{itemize}
+    \item \textbf{Map Service API}: The system shall interface with an external map provider (e.g., Google Maps API or OpenStreetMap) to render maps and visualize paths.
+    \item \textbf{Weather Service API}: The system shall interface with an external meteorological service to retrieve weather conditions (temperature, wind, rain) associated with a recorded trip.
+    \item \textbf{Mobile Operating System}: The application shall be compatible with major mobile OS platforms (e.g., Android, iOS).
+\end{itemize}
+
+\subsubsection{Communication Interfaces}
+\begin{itemize}
+    \item The client application shall communicate with the BBP backend server using \textbf{HTTPS} to ensure data security.
+    \item Data exchange format shall be \textbf{JSON} for structured information transfer.
+\end{itemize}
+
+
+
+\subsection{Functional Requirements}
+
+The following is a list of functional requirements derived from the system goals.
+
+\paragraph{Trip Recording}
+\begin{itemize}
+    \item \textbf{R1}: The system shall allow the user to start and stop the recording of a trip.
+    \item \textbf{R2}: The system shall track the user's geolocation via GPS during the trip.
+    \item \textbf{R3}: The system shall calculate trip statistics, including total distance and average speed.
+    \item \textbf{R4}: The system shall retrieve weather data from an external service upon trip completion.
+    \item \textbf{R5}: The system shall store the recorded trip details and statistics in the user's history.
+\end{itemize}
+
+\paragraph{History Management}
+\begin{itemize}
+    \item \textbf{R6}: The system shall allow users to view a list of their past trips.
+    \item \textbf{R7}: The system shall allow users to view detailed information for a specific past trip.
+\end{itemize}
+
+\paragraph{Path Information Management}
+\begin{itemize}
+    \item \textbf{R8}: The system shall allow users to manually insert information about a bike path (street name, status, obstacles).
+    \item \textbf{R9}: The system shall allow users to set the visibility of their inserted information to "Private" or "Publishable".
+\end{itemize}
+
+\paragraph{Path Visualization}
+\begin{itemize}
+    \item \textbf{R10}: The system shall allow users to input an origin and a destination address.
+    \item \textbf{R11}: The system shall identify and visualize possible bike paths between the origin and destination on a map.
+    \item \textbf{R12}: The system shall compute and display a score for each path based on its status and user reports.
+\end{itemize}
+
+\subsubsection{Use Cases}
+
+% UC1: Record Trip
+% Covers the requirement: "The recording of personal trips." 
+% Includes weather data retrieval 
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC1: Record a Biking Trip}                                                   \\ \hline
+    \textbf{Actors}          & Registered User, External Weather Service                                            \\ \hline
+    \textbf{Entry Condition} & The user is logged into the BBP application, and the device's GPS is active.         \\ \hline
+    \textbf{Event Flow}      &
+    1. The User navigates to the "Trip" section and presses "Start Recording". \newline
+    2. The System begins tracking the user's location and duration. \newline
+    3. The User rides their bike to the destination. \newline
+    4. The User presses "Stop Recording". \newline
+    5. The System calculates trip statistics (distance, average speed). \newline
+    6. The System requests current weather data from the External Weather Service. \newline
+    7. The System saves the trip with statistics and weather data to the user's history. \newline
+    8. The System displays the trip summary to the User.                                                            \\ \hline
+    \textbf{Exit Condition}  & The trip is successfully stored in the database and visible in the user's history.   \\ \hline
+    \textbf{Exceptions}      &
+    (6) \textbf{Weather Service Unavailable}: If the external service does not respond, the System saves the trip without weather data and notifies the user. \newline
+    (2) \textbf{GPS Signal Lost}: If GPS is lost during the ride, the System pauses recording and prompts the user. \\ \hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+% UC2: Manual Info Insertion
+% Covers the requirement: "The insertion of publishable information in manual mode." 
+% Covers specific fields (street name, status) 
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC2: Insert Path Information (Manual)}                                                                \\ \hline
+    \textbf{Actors}          & Registered User                                                                                               \\ \hline
+    \textbf{Entry Condition} & The user is logged into the BBP application.                                                                  \\ \hline
+    \textbf{Event Flow}      &
+    1. The User selects ``Add Path Info''. \newline
+    2. The User manually enters the name of the street(s) included in the path. \newline
+    3. The User selects the status of the path (e.g., optimal, sufficient, requires maintenance). \newline
+    4. The User optionally describes obstacles (e.g., potholes). \newline
+    5. The User toggles the visibility setting (Publishable or Private). \newline
+    6. The User confirms the submission. \newline
+    7. The System validates the input and stores the information.                                                                            \\ \hline
+    \textbf{Exit Condition}  & The path information is stored. If marked ``Publishable'', it becomes available for system-wide path scoring. \\ \hline
+    \textbf{Exceptions}      &
+    (2) \textbf{Invalid Street Name}: The System cannot verify the street name against the map database and asks the User to correct it.     \\ \hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+% UC3: Visualize Paths
+% Covers the requirement: "The visualization of the information about possible paths..." 
+% Covers origin/destination and scoring 
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC3: Visualize Bike Paths}                                                   \\ \hline
+    \textbf{Actors}          & User (Registered or Unregistered)                                                    \\ \hline
+    \textbf{Entry Condition} & The user has the application open on the map view.                                   \\ \hline
+    \textbf{Event Flow}      &
+    1. The User specifies an "Origin" and a "Destination". \newline
+    2. The User requests to visualize paths. \newline
+    3. The System computes available paths between the points. \newline
+    4. The System calculates a score for each path based on path status and effectiveness. \newline
+    5. The System displays the paths on the map, highlighting the one with the highest score. \newline
+    6. The User browses the path details.                                                                           \\ \hline
+    \textbf{Exit Condition}  & The best available bike paths are visualized on the map.                             \\ \hline
+    \textbf{Exceptions}      &
+    (3) \textbf{No Path Found}: The System cannot find a viable bike path between the points and notifies the User. \\ \hline
+\end{longtable}
+
+% UC4: User Registration
+% Necessary because only "Registered users" can record trips 
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC4: User Registration}                                        \\ \hline
+    \textbf{Actors}          & Unregistered User                                                      \\ \hline
+    \textbf{Entry Condition} & The user has installed the application but does not have an account.   \\ \hline
+    \textbf{Event Flow}      &
+    1. The User launches the application and selects "Sign Up". \newline
+    2. The User enters required details (email, password, username). \newline
+    3. The System validates the input format. \newline
+    4. The System creates a new account in the database. \newline
+    5. The System confirms successful registration and logs the user in.                              \\ \hline
+    \textbf{Exit Condition}  & A new user profile is created, and the user is authenticated.          \\ \hline
+    \textbf{Exceptions}      &
+    (3) \textbf{Email Already Exists}: The System notifies the user that the email is already in use. \\ \hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+% UC5: User Login
+% Standard functionality found in the example RASD 
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC5: User Login}                                                                                \\ \hline
+    \textbf{Actors}          & User                                                                                                    \\ \hline
+    \textbf{Entry Condition} & The user opens the application and is not authenticated.                                                \\ \hline
+    \textbf{Event Flow}      &
+    1. The User enters email and password. \newline
+    2. The User presses the "Login" button. \newline
+    3. The System verifies the credentials against the database. \newline
+    4. The System grants access and redirects the User to the main dashboard.                                                          \\ \hline
+    \textbf{Exit Condition}  & The User is authenticated and can access restricted features (e.g., Record Trip).                       \\ \hline
+    \textbf{Exceptions}      &
+    (3) \textbf{Invalid Credentials}: The System displays an error message ("Incorrect email or password") and asks the user to retry. \\ \hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+% UC6: View Trip History
+% Covers the requirement to "keep track of their cycling activities" 
+\begin{longtable}{|p{3.5cm}|p{11cm}|}
+    \hline
+    \textbf{Name}            & \textbf{UC6: View Trip History}                                                                   \\ \hline
+    \textbf{Actors}          & Registered User                                                                                   \\ \hline
+    \textbf{Entry Condition} & The user is logged in and has previously recorded at least one trip.                              \\ \hline
+    \textbf{Event Flow}      &
+    1. The User navigates to the "My Trips" (History) section. \newline
+    2. The System retrieves the list of past trips associated with the user account. \newline
+    3. The System displays the list, showing summary data (date, distance) for each trip. \newline
+    4. The User selects a specific trip to view details. \newline
+    5. The System displays detailed statistics (average speed, duration, weather conditions) for the selected trip.              \\ \hline
+    \textbf{Exit Condition}  & The User successfully reviews their past cycling activities.                                      \\ \hline
+    \textbf{Exceptions}      &
+    (2) \textbf{No History Available}: If the user has no recorded trips, the System displays a "No trips recorded yet" message. \\ \hline
+\end{longtable}
+
+\subsubsection{Sequence Diagrams}
+
+The following diagram illustrates the interaction flow for recording a biking trip.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{UC1.png}
+    \caption{Sequence Diagram: UC1 - Record a Biking Trip}
+    \label{fig:uc1_sequence}
+\end{figure}
+
+The process begins when the user initiates the recording...
+
+
+The following diagram describes how a user manually inserts information regarding a bike path.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{UC2.png}
+    \caption{Sequence Diagram: UC2 - Insert Path Information}
+    \label{fig:uc2_sequence}
+\end{figure}
+
+
+This diagram illustrates the process of requesting and visualizing the best bike path between two points.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{UC3.png}
+    \caption{Sequence Diagram: UC3 - Visualize Bike Paths}
+    \label{fig:uc3_sequence}
+\end{figure}
+
+
+The registration process flow, including validation checks, is shown below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{UC4.png}
+    \caption{Sequence Diagram: UC4 - User Registration}
+    \label{fig:uc4_sequence}
+\end{figure}
+
+The authentication flow for user login is depicted in the following diagram.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{UC5.png}
+    \caption{Sequence Diagram: UC5 - User Login}
+    \label{fig:uc5_sequence}
+\end{figure}
+
+
+The following diagram describes the interaction for retrieving and viewing past trip records, including statistics and weather data.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{UC6.png}
+    \caption{Sequence Diagram: UC6 - View Trip History}
+    \label{fig:uc6_sequence}
+\end{figure}
+
+\subsubsection{Requirement Mapping}
+The following table maps the Goals (G) identified in the Introduction to the Functional Requirements (R) and Domain Assumptions (D).
+
+\begin{longtable}{|p{2cm}|p{8cm}|p{4cm}|}
+    \hline
+    \textbf{Goal}           & \textbf{Related Requirements} & \textbf{Assumptions} \\ \hline
+    \textbf{G1} (Record)    & R1, R2, R3, R4                & D1, D2, D5           \\ \hline
+    \textbf{G2} (History)   & R5                            & D3                   \\ \hline
+    \textbf{G3} (Visualize) & R10, R11, R12                 & D3, D6               \\ \hline
+    \textbf{G4} (Add Info)  & R6, R7, R8                    & D4                   \\ \hline
+    \textbf{G5} (Share)     & R9                            & D4                   \\ \hline
+\end{longtable}
+
+\subsection{Performance Requirements}
+
+The BBP system shall provide responses to user interactions within a reasonable time frame.
+
+In particular:
+\begin{itemize}
+    \item Trip recording activation and termination shall be acknowledged within a few seconds.
+    \item Visualization of bike paths shall be completed within an acceptable delay, depending on network conditions.
+\end{itemize}
+
+\subsection{Design Constraints}
+
+\subsubsection{Standards Compliance}
+\begin{itemize}
+    \item \textbf{GDPR Compliance}: Since the system collects personal data (location history, email), it must comply with the General Data Protection Regulation (GDPR) to ensure user privacy.
+    \item \textbf{Map Data Standards}: The system handles geospatial data and should adhere to standard formats (e.g., GeoJSON) for compatibility with map services.
+\end{itemize}
+
+\subsubsection{Hardware Limitations}
+\begin{itemize}
+    \item \textbf{GPS Accuracy}: The system's tracking precision is limited by the accuracy of the mobile device's GPS sensor, which may vary in urban canyons or bad weather.
+    \item \textbf{Battery Consumption}: Continuous GPS tracking is battery-intensive. The application must be optimized to minimize battery drain during long trips.
+\end{itemize}
+
+\subsubsection{Other Constraints}
+\begin{itemize}
+    \item \textbf{Network Dependency}: Core features like map visualization and weather retrieval require an active internet connection. Offline capabilities are limited to local recording (if supported by design).
+\end{itemize}
+
+\subsection{Software System Attributes}
+
+\subsubsection{Reliability}
+The BBP system shall ensure that recorded trips and inserted path information are not lost once confirmed by the user.
+
+\subsubsection{Availability}
+The system shall be available during normal operation times, subject to network connectivity and external service availability.
+
+\subsubsection{Security}
+The system shall restrict access to personal data and ensure that only authenticated users can access their recorded trips and private path information.
+
+\subsubsection{Maintainability}
+The BBP system shall be designed to allow future extensions, such as additional path attributes or enhanced visualization features.
+
+\subsubsection{Portability}
+The system shall be deployable on commonly used platforms supporting web or mobile applications.
+
+
+% =================================================
+% =================================================
+% 4. Formal Analysis Using Alloy
+% =================================================

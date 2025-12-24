@@ -1,0 +1,11 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces Detailed Domain Model Class Diagram}}{9}{figure.caption.9}%
+\contentsline {figure}{\numberline {2}{\ignorespaces State Diagram: Lifecycle of a Biking Trip}}{10}{figure.caption.10}%
+\contentsline {figure}{\numberline {3}{\ignorespaces State Diagram: Path Information Visibility States}}{11}{figure.caption.11}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Sequence Diagram: UC1 - Record a Biking Trip}}{18}{figure.caption.16}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Sequence Diagram: UC2 - Insert Path Information}}{19}{figure.caption.17}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Sequence Diagram: UC3 - Visualize Bike Paths}}{20}{figure.caption.18}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Sequence Diagram: UC4 - User Registration}}{21}{figure.caption.19}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Sequence Diagram: UC5 - User Login}}{22}{figure.caption.20}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Sequence Diagram: UC6 - View Trip History}}{23}{figure.caption.21}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Alloy Instance: Static relationships between Users, Trips, and Path Information}}{26}{figure.caption.22}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Alloy Trace: Dynamic evolution of the Trip State over Time}}{27}{figure.caption.25}%
