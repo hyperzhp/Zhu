@@ -1,8 +1,8 @@
-PWD d:/Download/Example+Of+Latex+Doc/Example+Of+Latex+Doc
+PWD d:/文档/py_projects/SE2/Zhu
 INPUT d:/texlive/2025/texmf.cnf
 INPUT d:/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT d:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT d:/Download/Example+Of+Latex+Doc/Example+Of+Latex+Doc/main.tex
+INPUT d:/文档/py_projects/SE2/Zhu/main.tex
 OUTPUT main.log
 INPUT d:/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT d:/texlive/2025/texmf-dist/tex/latex/base/article.cls
