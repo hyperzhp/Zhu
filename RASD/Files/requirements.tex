@@ -1,8 +1,8 @@
 \subsection{External Interface Requirements}
-\subsection{External Interface Requirements}
+
 
 \subsubsection{User Interfaces}
-The user interface of the BBP application shall be designed to be intuitive, responsive, and accessible, considering that users might interact with it while outdoors.
+The user interface of the BBP application shall be designed to be intuitive, responsive, and accessible, considering that users might interact with it while outdoors (high contrast, large buttons).
 \begin{itemize}
     \item \textbf{Dashboard Map View}: The main screen shall display a map centered on the user's current location, showing nearby bike paths and their status codes (e.g., Green for optimal, Red for maintenance required).
     \item \textbf{Trip Recording Interface}: A simplified high-contrast screen displaying real-time metrics (Duration, Distance, Current Speed) with large "Pause" and "Stop" buttons to facilitate interaction during stops.
@@ -14,30 +14,23 @@ All UI components shall adhere to the Material Design (Android) and Human Interf
 \subsubsection{Hardware Interfaces}
 The system requires direct interaction with the following hardware components of the mobile device:
 \begin{itemize}
-    \item \textbf{GPS/GNSS Sensor}: The system shall interface with the device's location services to obtain geolocation coordinates (latitude, longitude, altitude) with a minimum accuracy of 10 meters.
-    \item \textbf{Storage}: The system shall access the device's internal storage to cache map data and temporarily save trip logs before synchronization.
+    \item \textbf{GPS/GNSS Sensor}: The system shall interface with the device's location services to obtain geolocation coordinates (latitude, longitude, altitude) with a minimum accuracy of 10-15 meters.
+    \item \textbf{Storage}: The system shall access the device's internal storage to cache map data and temporarily save trip logs before synchronization to the backend.
     \item \textbf{Network Interface}: The system shall utilize the device's Wi-Fi or Cellular Data (4G/5G) interface to communicate with the backend server and external APIs.
+    \item \textbf{Touch Screen}: The system requires a multi-touch screen for map manipulation (pinch-to-zoom) and data entry.
 \end{itemize}
 
 \subsubsection{Software Interfaces}
 \begin{itemize}
-    \item \textbf{Map Service API}: The system shall interface with an external map provider (e.g., OpenStreetMap or Google Maps API) to render map tiles and perform geocoding.
+    \item \textbf{Map Service API}: The system shall interface with an external map provider (e.g., OpenStreetMap or Google Maps API) to render map tiles, calculate routes, and perform reverse geocoding.
     \item \textbf{Weather Service API}: The system shall communicate with a third-party meteorological service (e.g., OpenWeatherMap) via REST API to retrieve weather conditions based on timestamp and location.
-    \item \textbf{Mobile Operating System}: The application shall be compatible with Android 12+ and iOS 15+, utilizing native OS APIs for background location tracking.
+    \item \textbf{Mobile Operating System}: The application shall be compatible with Android 12+ and iOS 15+, utilizing native OS APIs for background location tracking and notifications.
 \end{itemize}
 
 \subsubsection{Communication Interfaces}
 \begin{itemize}
     \item \textbf{Protocol}: All client-server communication shall be encrypted using TLS 1.3 (HTTPS) to ensure data confidentiality.
     \item \textbf{Data Format}: Data exchange regarding trips, paths, and user profiles shall be formatted in JSON (JavaScript Object Notation).
-\end{itemize}
-\subsubsection{User Interfaces}
-The BBP system shall provide a mobile application interface for cyclists. Key screens include:
-\begin{itemize}
-    \item \textbf{Dashboard/Map View}: The main screen displaying the user's current location and nearby bike paths on a map.
-    \item \textbf{Trip Recording Interface}: Displays real-time statistics (speed, duration) and controls to start/stop recording.
-    \item \textbf{Trip History}: A list of previously recorded trips with summary data.
-    \item \textbf{Path Information Form}: A form to manually insert data about a path (status, obstacles) and set visibility.
 \end{itemize}
 The UI shall be designed to be intuitive and usable on touch-screen devices.
 
@@ -95,6 +88,7 @@ The following is a list of functional requirements derived from the system goals
     \item \textbf{R11}: The system shall identify and visualize possible bike paths between the origin and destination on a map.
     \item \textbf{R12}: The system shall compute and display a score for each path based on its status and user reports.
 \end{itemize}
+
 
 \subsubsection{Use Cases}
 
@@ -291,21 +285,21 @@ The following table maps the Goals (G) identified in the Introduction to the Fun
 \begin{longtable}{|p{2cm}|p{8cm}|p{4cm}|}
     \hline
     \textbf{Goal}           & \textbf{Related Requirements} & \textbf{Assumptions} \\ \hline
-    \textbf{G1} (Record)    & R1, R2, R3, R4                & D1, D2, D5           \\ \hline
-    \textbf{G2} (History)   & R5                            & D3                   \\ \hline
-    \textbf{G3} (Visualize) & R10, R11, R12                 & D3, D6               \\ \hline
-    \textbf{G4} (Add Info)  & R6, R7, R8                    & D4                   \\ \hline
+    \textbf{G1} (Record)    & R1, R2, R3, R4, R5            & D1, D2, D5, D6       \\ \hline
+    \textbf{G2} (History)   & R5, R6, R7                    & D3                   \\ \hline
+    \textbf{G3} (Visualize) & R10, R11, R12                 & D2, D3               \\ \hline
+    \textbf{G4} (Add Info)  & R8                            & D4                   \\ \hline
     \textbf{G5} (Share)     & R9                            & D4                   \\ \hline
 \end{longtable}
 
+
 \subsection{Performance Requirements}
-
-The BBP system shall provide responses to user interactions within a reasonable time frame.
-
-In particular:
+The BBP system shall ensure a responsive user experience. Specific metrics include:
 \begin{itemize}
-    \item Trip recording activation and termination shall be acknowledged within a few seconds.
-    \item Visualization of bike paths shall be completed within an acceptable delay, depending on network conditions.
+    \item \textbf{Latency}: Trip recording activation (Start/Stop) shall be acknowledged by the UI within 1 second.
+    \item \textbf{Rendering}: Map tiles and bike path overlays shall load within 2 seconds under a 4G network connection.
+    \item \textbf{Capacity}: The backend shall support concurrent synchronization of trip data from at least 1,000 simultaneous users without service degradation.
+    \item \textbf{Accuracy}: Distance calculations for recorded trips shall have a margin of error of less than 5\% compared to the raw GPS data.
 \end{itemize}
 
 \subsection{Design Constraints}

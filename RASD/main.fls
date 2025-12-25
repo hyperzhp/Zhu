@@ -1,8 +1,8 @@
-PWD d:/文档/py_projects/SE2/Zhu
+PWD d:/文档/py_projects/SE2/Zhu/RASD
 INPUT d:/texlive/2025/texmf.cnf
 INPUT d:/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT d:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT d:/文档/py_projects/SE2/Zhu/main.tex
+INPUT d:/文档/py_projects/SE2/Zhu/RASD/main.tex
 OUTPUT main.log
 INPUT d:/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT d:/texlive/2025/texmf-dist/tex/latex/base/article.cls

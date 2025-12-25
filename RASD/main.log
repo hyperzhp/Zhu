@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.3)  24 DEC 2025 12:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.3)  24 DEC 2025 14:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/文档/py_projects/SE2/Zhu/main.tex
-(d:/文档/py_projects/SE2/Zhu/main.tex
+**d:/文档/py_projects/SE2/Zhu/RASD/main.tex
+(d:/文档/py_projects/SE2/Zhu/RASD/main.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-14>
 (d:/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -586,12 +586,12 @@ Overfull \hbox (55.85364pt too wide) in paragraph at lines 28--30
 [8
 
 {d:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
-<Images/domain_model_advanced.png, id=359, 876.27374pt x 710.655pt>
+<Images/domain_model_advanced.png, id=349, 876.27374pt x 710.655pt>
 File: Images/domain_model_advanced.png Graphic file (type png)
 <use Images/domain_model_advanced.png>
 Package pdftex.def Info: Images/domain_model_advanced.png  used on input line 39.
 (pdftex.def)             Requested size: 455.24411pt x 369.20657pt.
-<Images/state_trip.png, id=361, 470.75874pt x 737.75626pt>
+<Images/state_trip.png, id=351, 470.75874pt x 737.75626pt>
 File: Images/state_trip.png Graphic file (type png)
 <use Images/state_trip.png>
 Package pdftex.def Info: Images/state_trip.png  used on input line 52.
@@ -600,7 +600,7 @@ Package pdftex.def Info: Images/state_trip.png  used on input line 52.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9 <./Images/domain_model_advanced.png>]
-<Images/state_info.png, id=369, 548.0475pt x 519.9425pt>
+<Images/state_info.png, id=359, 548.0475pt x 519.9425pt>
 File: Images/state_info.png Graphic file (type png)
 <use Images/state_info.png>
 Package pdftex.def Info: Images/state_info.png  used on input line 63.
@@ -608,73 +608,73 @@ Package pdftex.def Info: Images/state_info.png  used on input line 63.
  [10 <./Images/state_trip.png>] [11 <./Images/state_info.png>]) [12] (./Files/requirements.tex [13
 
 ] [14]
-./Files/requirements.tex:122: ignored error: Infinite glue shrinkage found in box being split [15]
-./Files/requirements.tex:185: ignored error: Infinite glue shrinkage found in box being split [16]
-<Images/UC1.png, id=409, 608.2725pt x 564.1075pt>
+./Files/requirements.tex:139: ignored error: Infinite glue shrinkage found in box being split [15]
+./Files/requirements.tex:198: ignored error: Infinite glue shrinkage found in box being split [16]
+<Images/UC1.png, id=400, 608.2725pt x 564.1075pt>
 File: Images/UC1.png Graphic file (type png)
 <use Images/UC1.png>
-Package pdftex.def Info: Images/UC1.png  used on input line 232.
+Package pdftex.def Info: Images/UC1.png  used on input line 226.
 (pdftex.def)             Requested size: 409.71692pt x 379.98145pt.
 
-Underfull \vbox (badness 3942) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17]
-<Images/UC2.png, id=416, 584.1825pt x 575.14874pt>
+<Images/UC2.png, id=406, 584.1825pt x 575.14874pt>
 File: Images/UC2.png Graphic file (type png)
 <use Images/UC2.png>
-Package pdftex.def Info: Images/UC2.png  used on input line 244.
+Package pdftex.def Info: Images/UC2.png  used on input line 238.
 (pdftex.def)             Requested size: 409.71692pt x 403.39122pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [18 <./Images/UC1.png>]
-<Images/UC3.png, id=422, 619.31375pt x 590.205pt>
+<Images/UC3.png, id=412, 619.31375pt x 590.205pt>
 File: Images/UC3.png Graphic file (type png)
 <use Images/UC3.png>
-Package pdftex.def Info: Images/UC3.png  used on input line 254.
+Package pdftex.def Info: Images/UC3.png  used on input line 248.
 (pdftex.def)             Requested size: 409.71692pt x 390.4731pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [19 <./Images/UC2.png>]
-<Images/UC4.png, id=430, 649.42625pt x 663.47874pt>
+<Images/UC4.png, id=419, 649.42625pt x 663.47874pt>
 File: Images/UC4.png Graphic file (type png)
 <use Images/UC4.png>
-Package pdftex.def Info: Images/UC4.png  used on input line 264.
+Package pdftex.def Info: Images/UC4.png  used on input line 258.
 (pdftex.def)             Requested size: 409.71692pt x 418.59113pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [20 <./Images/UC3.png>]
-<Images/UC5.png, id=436, 688.5725pt x 440.64626pt>
+<Images/UC5.png, id=425, 688.5725pt x 440.64626pt>
 File: Images/UC5.png Graphic file (type png)
 <use Images/UC5.png>
-Package pdftex.def Info: Images/UC5.png  used on input line 273.
+Package pdftex.def Info: Images/UC5.png  used on input line 267.
 (pdftex.def)             Requested size: 409.71692pt x 262.19786pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [21 <./Images/UC4.png>]
-<Images/UC6.png, id=442, 579.16376pt x 502.87875pt>
+<Images/UC6.png, id=432, 579.16376pt x 502.87875pt>
 File: Images/UC6.png Graphic file (type png)
 <use Images/UC6.png>
-Package pdftex.def Info: Images/UC6.png  used on input line 283.
+Package pdftex.def Info: Images/UC6.png  used on input line 277.
 (pdftex.def)             Requested size: 409.71692pt x 355.74962pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [22 <./Images/UC5.png>]
-Underfull \hbox (badness 2726) in paragraph at lines 296--296
+Underfull \hbox (badness 2726) in paragraph at lines 290--290
 []|\T1/ptm/b/n/10.95 G3 \T1/ptm/m/n/10.95 (Vi-su-al-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--297
+Underfull \hbox (badness 10000) in paragraph at lines 291--291
 []|\T1/ptm/b/n/10.95 G4 \T1/ptm/m/n/10.95 (Add
  []
 
 [23 <./Images/UC6.png>]) [24] (./Files/alloy.tex
-<Images/alloy_static.png, id=459, 830.24464pt x 111.84644pt>
+<Images/alloy_static.png, id=449, 830.24464pt x 111.84644pt>
 File: Images/alloy_static.png Graphic file (type png)
 <use Images/alloy_static.png>
 Package pdftex.def Info: Images/alloy_static.png  used on input line 45.
@@ -682,7 +682,7 @@ Package pdftex.def Info: Images/alloy_static.png  used on input line 45.
  [25
 
 ] [26 <./Images/alloy_static.png>]
-<Images/alloy_dynamic.png, id=472, 580.3109pt x 118.72928pt>
+<Images/alloy_dynamic.png, id=462, 580.3109pt x 118.72928pt>
 File: Images/alloy_dynamic.png Graphic file (type png)
 <use Images/alloy_dynamic.png>
 Package pdftex.def Info: Images/alloy_dynamic.png  used on input line 134.
@@ -701,21 +701,21 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-14>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: AB2862398057D3FCBCB87A22A5E5867B;8815.
+(rerunfilecheck)             Checksum: 747E316514395B5DCF765E992BD8C3FA;8450.
  ) 
 Here is how much of TeX's memory you used:
- 16093 strings out of 467538
- 250624 string characters out of 5423725
- 686232 words of memory out of 5000000
- 44617 multiletter control sequences out of 15000+600000
+ 16089 strings out of 467538
+ 250569 string characters out of 5423725
+ 688242 words of memory out of 5000000
+ 44615 multiletter control sequences out of 15000+600000
  661027 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,20n,93p,721b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 87i,20n,93p,726b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><d:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (29 pages, 381010 bytes).
+Output written on main.pdf (29 pages, 381827 bytes).
 PDF statistics:
- 538 PDF objects out of 1000 (max. 8388607)
- 470 compressed objects within 5 object streams
- 118 named destinations out of 1000 (max. 500000)
- 517 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 528 PDF objects out of 1000 (max. 8388607)
+ 460 compressed objects within 5 object streams
+ 116 named destinations out of 1000 (max. 500000)
+ 501 words of extra memory for PDF output out of 10000 (max. 10000000)
 
