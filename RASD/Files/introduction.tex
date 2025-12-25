@@ -17,11 +17,24 @@ G4: The user wants to manually add information about a bike path based on person
 
 G5: The user wants to decide whether the information added about a bike path should be made visible to other users, in order to control its sharing.
 \subsection{Scope}
-% Describe the application domain
-The scope of the document is limited to the functionalitiThis section describes the application domain of the Best Bike Paths (BBP) system by distinguishing between phenomena that occur in the real world and those that are shared between the system and its users.
+The scope of this document encompasses the core software architecture and functional logic required to support individual cyclists in their daily activities.
 
-The scope of this document is limited to the functionalities assigned to single-student groups, namely the recording of personal biking trips, the manual insertion of information about bike paths, and the visualization of bike paths between a specified origin and destination.
-Advanced functionalities such as automatic data collection, aggregation of reports from multiple users, and conflict resolution are explicitly excluded from the scope.
+\subsubsection{In-Scope Functionalities}
+The system focuses on the following key areas:
+\begin{itemize}
+    \item \textbf{Telemetry Recording}: The real-time tracking of geolocation data to reconstruct biking trips, calculating metrics such as distance, duration, and average speed.
+    \item \textbf{Crowdsourced Data Management}: The mechanism for users to manually report static path conditions (e.g., surface quality) and transient obstacles (e.g., roadworks).
+    \item \textbf{Path Visualization \& Scoring}: The rendering of bike paths on a map interface, enriched with user-contributed data and computed scores reflecting path quality.
+    \item \textbf{Privacy Controls}: Granular control mechanisms allowing users to toggle the visibility of their contributed data between private and public scopes.
+\end{itemize}
+
+\subsubsection{Out-of-Scope Functionalities}
+To maintain a feasible scope for the current development phase (single-student project), the following features are explicitly excluded:
+\begin{itemize}
+    \item \textbf{Algorithmic Route Optimization}: The system will not perform Dijkstra or A* pathfinding algorithms to suggest new routes; it relies on pre-calculated routes from external APIs.
+    \item \textbf{Social Networking}: Features such as "friending" other users, commenting on trips, or leaderboards are not included.
+    \item \textbf{Hardware Integration}: Direct integration with external hardware sensors (e.g., heart rate monitors, cadence sensors) via Bluetooth/ANT+ is excluded.
+\end{itemize}
 \subsubsection{World Phenomena}
 % Describe phenomena outside the system control
 World phenomena are events and conditions that occur independently of the BBP system and are not directly controlled by it. These phenomena belong to the environment in which the system operates.

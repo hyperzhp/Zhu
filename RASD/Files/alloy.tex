@@ -1,12 +1,14 @@
-In this section, we present a formal specification of critical aspects of the Best Bike Paths (BBP) system using Alloy.
-Following the project requirements, we focused on two distinct models to validate different properties of the system:
-\begin{itemize}
-    \item \textbf{Static Structural Model:} This model defines the relationships between users, bike paths, trips, and path information, focusing on data consistency and visibility constraints.
-    \item \textbf{Dynamic Behavioral Model:} This model describes the lifecycle of a trip recording, ensuring that the state transitions (from Idle to Recording to Recorded) occur in a valid temporal sequence.
-\end{itemize}
+In this section, we present a formal specification of critical aspects of the Best Bike Paths (BBP) system using \textbf{Alloy}, a declarative modeling language based on first-order logic and relational calculus.
+
+\subsection{Methodological Approach}
+Given the complexity of state management in mobile applications, particularly regarding data persistence and privacy, natural language requirements can sometimes be ambiguous. To mitigate this, we employed formal methods to:
+\begin{enumerate}
+    \item \textbf{Validate Data Consistency}: Ensuring that relationships between users, trips, and path reports obey cardinality and visibility constraints (Static Model).
+    \item \textbf{Verify Temporal Logic}: Ensuring that the lifecycle of a trip follows a strict, irreversible sequence of states, preventing invalid system states such as "recording a trip that hasn't started" (Dynamic Model).
+\end{enumerate}
 
 \subsection{Static Structural Model}
-The first model captures the static entities of the domain. We modeled \texttt{User}, \texttt{BikePath}, and \texttt{Trip} to represent the core data. Additionally, \texttt{PathInformation} was introduced to handle the visibility settings (\texttt{Private} or \texttt{Shared}) of user-generated content.
+The static model captures the immutable rules governing the data entities. A key design decision in BBP is the separation of "Private" and "Shared" data.
 
 \begin{verbatim}
 // ---------------------------------------------------------
@@ -48,8 +50,9 @@ We executed the static model to generate instances that verify the relationships
 \end{figure}
 
 \subsection{Dynamic Behavioral Model}
-The second part of the analysis focuses on the time-dependent behavior of the \texttt{Trip} entity. We utilized the \texttt{util/ordering[Time]} module to simulate the progression of states.
-We defined a \texttt{TripState} enumeration containing \texttt{Idle}, \texttt{Recording}, and \texttt{Recorded} values, and we modeled the specific constraints allowing transitions between these states over time.
+The dynamic model focuses on the \texttt{Trip} entity, which is the system's most state-sensitive component. We utilized the \texttt{util/ordering} module to simulate time steps.
+
+The critical property we wished to verify is the \textbf{integrity of the recording process}. A trip must logically flow from an \texttt{Idle} state (system ready), through a \texttt{Recording} state (data accumulation), to a \texttt{Recorded} state (persistence).
 
 \begin{verbatim}
 // ---------------------------------------------------------

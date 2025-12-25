@@ -3,17 +3,17 @@
 The Best Bike Paths (BBP) system is a standalone mobile application that interacts with external services (Maps and Weather) to provide value to individual cyclists. The system manages the lifecycle of two main entities: the biking \textbf{Trip} and the manually inserted \textbf{Path Information}.
 \subsubsection{Scenarios}
 
-% Scenario 1: Focuses on the "Recording of personal trips" functionality 
-\paragraph{Scenario 1: User records a personal biking trip}
-User Alice is about to start her daily commute to work and wants to track her performance. She opens the Best Bike Paths (BBP) application on her smartphone and logs in. She navigates to the "My Trips" section and taps the "Start Recording" button. As she cycles, the system tracks her location via GPS. Once she arrives at her office, she taps "Stop Recording". The system automatically retrieves the current weather conditions (e.g., temperature and wind speed) from an external service and saves the trip . Alice can now view the summary of her ride, including total distance and average speed, stored in her personal history.
+\paragraph{Scenario 1: Personal Performance Tracking in Variable Weather}
+\textbf{Actor}: Alice, an avid commuter. \\
+Alice prepares for her morning commute. She launches the BBP application and ensures her GPS is locked. She taps "Start Recording" and places her phone in her handlebar mount. As she rides, the weather shifts from sunny to light rain. Unfazed, Alice continues her ride. Upon arriving at her office, she hits "Stop Recording." The system not only saves her 15km route but also automatically queries the external weather service to tag the trip with "Light Rain, 12°C." Reviewing her history later, Alice can analyze how weather conditions impacted her average speed compared to sunny days.
 
-% Scenario 2: Focuses on "The insertion of publishable information in manual mode" 
-\paragraph{Scenario 2: User manually inserts path information}
-User Bob is riding through "Oak Street" and notices that the bike lane is full of potholes, making it dangerous. Later, when he is safe at home, he decides to report this to the community. He logs into BBP and selects the "Add Path Info" feature. He manually enters the street name "Oak Street" and sets the status to "Requires Maintenance". He also adds a note specifying "Deep potholes near the intersection." He decides to make this information public so other cyclists can be warned, toggling the "Publishable" option. The system saves this report and associates it with the specific path location.
+\paragraph{Scenario 2: Community Reporting of Hazardous Conditions}
+\textbf{Actor}: Bob, a recreational mountain biker. \\
+While exploring a popular trail, Bob encounters a fallen tree blocking the path, forcing him to dismount. He realizes this is a safety hazard for others. Once he finishes his ride and is in a safe location, Bob opens the BBP app. He navigates to the "Add Path Info" interface. He selects the specific trail segment, chooses the category "Obstacle," and types "Fallen tree blocking 80\% of the path." He selects the "Requires Maintenance" status. Crucially, he toggles the visibility to "Publishable" so that other cyclists planning a route in that area will see a warning indicator on their maps.
 
-% Scenario 3: Focuses on "The visualization of the information about possible paths..." 
-\paragraph{Scenario 3: User visualizes bike paths between origin and destination}
-User Charlie wants to bike from his home to the central train station but is unsure of the safest route. He opens the BBP application and enters his home address as the "Origin" and the station address as the "Destination". The system searches for existing bike paths connecting these two points. It finds two possible routes and displays them on a map. The system highlights the first route as the recommended option because it has a higher score, calculated based on recent user reports indicating "Optimal" status . Charlie selects this route to view the details before starting his ride.
+\paragraph{Scenario 3: Route Safety Visualization for New Cyclists}
+\textbf{Actor}: Charlie, a novice cyclist. \\
+Charlie wants to visit a friend across town but is nervous about riding in traffic. He opens BBP to check the route. He enters his origin and destination. The system displays the most direct path but highlights several segments in "Red." Tapping on these segments, Charlie sees user reports indicating "Heavy Potholes" and "No Bike Lane." He notices an alternative, slightly longer route highlighted in "Green," indicating "Optimal" status based on community feedback. Charlie chooses the green route, prioritizing safety over speed.
 
 \subsubsection{Domain Model}
 The Domain Model shown in Figure \ref{fig:domain_model} illustrates the static structure of the BBP system, highlighting the complexity of data management regarding trips and path reports.
@@ -82,17 +82,17 @@ The main functions of the system include:
 The BBP system does not perform automatic data collection, route optimization, or aggregation of information from multiple users, as these functionalities are outside the scope of the current system.
 
 \subsection{User Characteristics}
-
-The intended users of the BBP system are individual cyclists with basic familiarity with mobile or web-based applications.
-
-Users are expected to:
+The user base of BBP is diverse, yet they share common traits relevant to system design:
 \begin{itemize}
-    \item Be able to interact with graphical user interfaces.
-    \item Manually provide information related to bike paths based on personal experience.
-    \item Understand basic map representations, including origin and destination points.
+    \item \textbf{Demographics}: The system targets a wide age range (16-65+), encompassing students, commuters, and recreational cyclists.
+    \item \textbf{Technical Literacy}: Users are assumed to have basic proficiency with smartphones (Android/iOS) and map-based navigation apps. No specialized technical knowledge is required.
+    \item \textbf{Usage Patterns}:
+          \begin{itemize}
+              \item \textit{Active Mode}: Eyes-free or minimal interaction required while riding (large buttons, high contrast).
+              \item \textit{Passive Mode}: Detailed interaction (reporting, reviewing history) occurs when stationary.
+          \end{itemize}
+    \item \textbf{Motivation}: Users are motivated by a mix of "Quantified Self" goals (tracking stats) and "Altruism" (contributing to community safety).
 \end{itemize}
-
-No advanced technical skills are required. The system is designed for occasional and personal use rather than professional or large-scale data analysis.
 
 \subsection{Assumptions, Dependencies and Constraints}
 

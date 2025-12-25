@@ -1,10 +1,35 @@
-\begin{longtable}{lll}
+\subsection{Time Allocation Analysis}
+The development of this Requirement Analysis and Specification Document (RASD) required a dedicated effort of approximately 30 hours. The process was structured into several key phases: domain exploration, requirement elicitation, formal modeling with Alloy, and the final documentation.
+
+The initial phase involved a deep analysis of the problem domain to identify the critical "World Phenomena" and "Shared Phenomena" relevant to the Best Bike Paths (BBP) system. Subsequently, significant time was invested in defining the functional requirements and structuring the use cases to ensure they covered all user goals effectively. The formal verification using Alloy required iterative refinement to ensure the model's consistency and validity.
+
+\subsection{Use of AI Assistants}
+To ensure the highest quality of documentation and technical accuracy, Generative AI tools—specifically **ChatGPT** and **Google Gemini**—were utilized as supportive instruments throughout the drafting process. The use of these tools was strictly limited to the following technical and editorial aspects:
+
+\begin{itemize}
+    \item \textbf{\LaTeX\ Formatting and Typesetting}: AI tools assisted in structuring complex \LaTeX\ environments, such as configuring the \texttt{fancyhdr} page headers, optimizing \texttt{longtable} layouts for use cases, and managing landscape page rotations.
+    \item \textbf{Language Polishing}: To enhance readability and professional tone, ChatGPT and Gemini were used to refine the English phrasing, ensuring that the terminology remained consistent and free of grammatical errors.
+    \item \textbf{Code Debugging}: During the compilation of the document, AI assistants helped identify and resolve syntax errors within the \LaTeX\ source code, particularly regarding package conflicts and image floating issues.
+\end{itemize}
+
+It is important to note that while AI tools assisted with presentation and syntax, the core requirement analysis, logical design, Alloy modeling, and creative content generation were performed entirely by the author.
+
+\subsection{Summary of Effort}
+The following table summarizes the total hours spent on the project by the author.
+
+\begin{longtable}{p{0.4\textwidth} p{0.4\textwidth} p{0.1\textwidth}}
     \toprule
-    Name        & Task             & Hours \\
+    \textbf{Student Name} & \textbf{Primary Activity}       & \textbf{Hours} \\
     \midrule
-    Haipeng Zhu & RASD preparation & 30    \\
+    Haipeng Zhu           & \begin{minipage}[t]{\linewidth}
+                                \vspace{2mm}
+                                \begin{itemize}[leftmargin=*]
+            \item Requirement Analysis
+            \item Alloy Modeling
+            \item Document Structuring
+            \item AI-Assisted Formatting \& Review
+        \end{itemize}
+                                \vspace{2mm}
+                            \end{minipage} & 30                   \\
     \bottomrule
 \end{longtable}
-
-
-% =================================================
