@@ -1,0 +1,45 @@
+% ===================================================================
+% SECTION 4: REQUIREMENTS TRACEABILITY
+% ===================================================================
+
+\subsection{Traceability Overview}
+The following section demonstrates the completeness of the BBP system design by mapping each functional requirement defined in the \textit{Requirement Analysis and Specification Document (RASD)} to the specific architectural components and behavioral models (Sequence and State Diagrams) presented in this Design Document. 
+
+This traceability ensures that every requirement has a corresponding design element and that no functionality has been omitted during the architectural decomposition.
+
+\subsection{Traceability Matrix}
+The table below provides a detailed mapping between the Requirements (R), the Design Components, and the corresponding Use Case (UC) sequence diagrams.
+
+\begin{longtable}{|p{1.8cm}|p{5.5cm}|p{4.5cm}|p{2.5cm}|}
+    \hline
+    \rowcolor{Blue!10} \textbf{Req. ID} & \textbf{Requirement Summary} & \textbf{Design Components} & \textbf{Diagrams} \\
+    \hline
+    \endfirsthead
+    \hline
+    \rowcolor{Blue!10} \textbf{Req. ID} & \textbf{Requirement Summary} & \textbf{Design Components} & \textbf{Diagrams} \\
+    \hline
+    \endhead
+    \hline
+    \endfoot
+
+    \textbf{R1} & Start/Stop the recording of a biking trip. & Mobile: Trip Manager & Fig. \ref{fig:seq_uc1} \\ \hline
+    \textbf{R2} & Sample geolocation coordinates at a fixed frequency. & Mobile: Trip Manager, GPS Sensor & Fig. \ref{fig:seq_uc1}, \ref{fig:state_trip} \\ \hline
+    \textbf{R3} & Calculate trip statistics (distance, speed). & Mobile: Trip Manager; Server: Trip Controller & Fig. \ref{fig:seq_uc1} \\ \hline
+    \textbf{R4} & Fetch weather data upon trip completion. & Server: Trip Service, Weather Integration & Fig. \ref{fig:seq_uc1}, \ref{fig:state_trip} \\ \hline
+    \textbf{R5} & Browse personal trip history. & Mobile: UI Layer; Server: Trip Controller & Fig. \ref{fig:seq_uc6} \\ \hline
+    \textbf{R6} & Manually insert path status information. & Mobile: Path Reporter; Server: Path Controller & Fig. \ref{fig:seq_uc2} \\ \hline
+    \textbf{R7} & Categorize path status (Optimal, Bad, etc.). & Mobile: Path Reporter & Fig. \ref{fig:seq_uc2} \\ \hline
+    \textbf{R8} & Flag the presence of obstacles. & Mobile: Path Reporter & Fig. \ref{fig:seq_uc2} \\ \hline
+    \textbf{R9} & Set information visibility (Private/Shared). & Server: Path Controller, Database & Fig. \ref{fig:seq_uc2}, \ref{fig:state_info} \\ \hline
+    \textbf{R10} & Input origin and destination for path visualization. & Mobile: Map Engine / UI & Fig. \ref{fig:seq_uc3} \\ \hline
+    \textbf{R11} & Visualize possible biking paths on the map. & Mobile: Map Engine; External: Map API & Fig. \ref{fig:seq_uc3} \\ \hline
+    \textbf{R12} & Display computed Safety Scores for paths. & Server: Path Safety Scorer & Fig. \ref{fig:seq_uc3} \\ \hline
+\end{longtable}
+
+\subsection{Coverage Analysis}
+As indicated in the matrix above:
+\begin{itemize}
+    \item \textbf{Trip Management (R1--R5)} is primarily handled by the \textit{Trip Manager} component on the client side and the \textit{Trip Service} on the server side, with dynamic behavior captured in the Trip State Diagram and Sequence Diagrams UC1 and UC6.
+    \item \textbf{Crowdsourced Reporting (R6--R9)} relies on the \textit{Path Reporter} and \textit{Path Controller} modules, with privacy logic enforced by the Visibility State Diagram and Sequence Diagram UC2.
+    \item \textbf{Route Planning (R10--R12)} is implemented via the integration of the \textit{Map Engine} and the backend \textit{Path Safety Scorer}, as detailed in Sequence Diagram UC3.
+\end{itemize}

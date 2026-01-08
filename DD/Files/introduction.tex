@@ -1,0 +1,56 @@
+% ===================================================================
+% SECTION 1: INTRODUCTION
+% ===================================================================
+
+\subsection{Purpose}
+The purpose of this Design Document (DD) is to provide a comprehensive technical specification for the \textbf{Best Bike Paths (BBP)} system. While the Requirement Analysis and Specification Document (RASD) focused on the functional and non-functional requirements from a user's perspective, this document describes the software architecture, the decomposition into components, and the design choices made to satisfy those requirements.
+
+The DD serves as a primary reference for the development team, providing the blueprints necessary for the implementation phase. It bridges the gap between the problem description (RASD) and the final source code.
+
+\subsection{Scope}
+The BBP system is a modular platform designed to support individual cyclists. The scope of this design document covers the following technical areas:
+\begin{itemize}
+    \item \textbf{Mobile Client Application}: A cross-platform application responsible for user interaction, real-time GPS tracking, and path visualization.
+    \item \textbf{Backend Infrastructure}: A RESTful web service handling authentication, data persistence, and the business logic for calculating path safety scores.
+    \item \textbf{External Integrations}: The interfaces with third-party Map Providers (for rendering tiles and routing) and Meteorological Services (for atmospheric data enrichment).
+\end{itemize}
+
+\subsection{Definitions, Acronyms, Abbreviations}
+\begin{itemize}
+    \item \textbf{API}: Application Programming Interface.
+    \item \textbf{REST}: Representational State Transfer, an architectural style for distributed hypermedia systems.
+    \item \textbf{DTO}: Data Transfer Object, an object that carries data between processes.
+    \item \textbf{DAO}: Data Access Object, an object that provides an abstract interface to some type of database.
+    \item \textbf{JWT}: JSON Web Token, a compact, URL-safe means of representing claims to be transferred between two parties.
+    \item \textbf{DBMS}: Database Management System.
+    \item \textbf{HTTPS}: Hypertext Transfer Protocol Secure.
+\end{itemize}
+
+\subsection{Revision History}
+\begin{table}[h!]
+    \centering
+    \begin{tabu} to \textwidth { X[0.4,l,p] X[0.6,l,p] X[2,l,p] }
+        \hline
+        \textbf{Version} & \textbf{Date} & \textbf{Description} \\
+        \hline
+        1.0 & \today & Initial version of the Design Document. \\
+        \hline
+    \end{tabu}
+    \caption{Revision history of the DD}
+\end{table}
+
+\subsection{Reference Documents}
+\begin{itemize}
+    \item Politecnico di Milano, \emph{Assignment RDD AY 2024-2025 - Best Bike Paths}.
+    \item Haipeng Zhu, \emph{Best Bike Paths - Requirement Analysis and Specification Document (RASD)}, 2024.
+    \item IEEE Std 1016-2009, \emph{IEEE Standard for Information Technology - Systems Design - Software Design Descriptions}.
+\end{itemize}
+
+\subsection{Document Structure}
+The document is organized into the following main sections:
+\begin{itemize}
+    \item \textbf{Section 2 - Architectural Design}: Provides a high-level overview of the system architecture, component views, deployment strategies, and runtime behavior.
+    \item \textbf{Section 3 - User Interface Design}: Describes the user experience and provides mockups for the mobile application.
+    \item \textbf{Section 4 - Requirements Traceability}: Maps each functional requirement from the RASD to specific design elements in the DD.
+    \item \textbf{Section 5 - Implementation, Integration \& Testing}: Outlines the development plan and the strategy for verifying system correctness.
+\end{itemize}

@@ -1,0 +1,233 @@
+% ===================================================================
+% SECTION 2: ARCHITECTURAL DESIGN
+% ===================================================================
+
+\subsection{Overview}
+The \textbf{Best Bike Paths (BBP)} system is engineered as a distributed application adhering to the \textbf{3-tier Client-Server architectural pattern}. This choice is driven by the need to decouple the high-frequency interaction logic (mobile client) from the heavy analytical processing (backend). 
+
+The system architecture is organized into the following logical layers:
+\begin{itemize}
+    \item \textbf{Presentation Tier (Mobile Client)}: This layer acts as the primary interface for cyclists. It is responsible for real-time sensor management (GNSS/GPS), local data buffering to support the "Offline-First" strategy, and the rendering of vector-based map tiles.
+    \item \textbf{Application Tier (Backend Server)}: Hosted on a cloud infrastructure, this tier exposes a RESTful API. It orchestrates business processes, validates user credentials via JWT, and executes the core "Safety Score" algorithm by aggregating crowdsourced data.
+    \item \textbf{Data Tier (Persistence)}: This layer ensures data durability and consistency. It leverages a relational database (PostgreSQL) enhanced with geospatial extensions (PostGIS) to efficiently index and query spatiotemporal data (trajectories) and topological data (road segments).
+\end{itemize}
+
+\subsection{Component View}
+The static decomposition of the system is illustrated in Figure \ref{fig:component_diagram}. The design follows a \textbf{Service-Oriented} approach within the backend to ensure modularity.
+
+\subsubsection{Key Component Responsibilities}
+\begin{itemize}
+    \item \textbf{Mobile Client}:
+    \begin{itemize}
+        \item \textbf{Trip Manager}: The central controller for the recording session. It implements a 1Hz sampling loop and manages the transition between "Recording", "Paused", and "Stopped" states.
+        \item \textbf{Local Cache}: A lightweight SQLite database that acts as a buffer for trip data, ensuring no data is lost during temporary network outages.
+    \end{itemize}
+    \item \textbf{Backend Server}:
+    \begin{itemize}
+        \item \textbf{API Gateway}: The single entry point for all client requests. It handles SSL termination, rate limiting, and routes requests to the appropriate internal controller.
+        \item \textbf{Safety Scorer}: An analytical component that runs scheduled jobs to update the safety index of road segments based on recent user reports (e.g., last 30 days).
+        \item \textbf{Weather Integrator}: A specialized adapter that communicates with external Meteorological APIs asynchronously to enrich trip data without blocking the main response thread.
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{component_diagram}
+    \caption{BBP Component Diagram detailing tier decomposition and service dependencies}
+    \label{fig:component_diagram}
+\end{figure}
+
+\subsection{Deployment View}
+The physical deployment, shown in Figure \ref{fig:deployment_diagram}, is designed for high availability and security.
+
+\begin{itemize}
+    \item \textbf{Execution Environment}: The backend services are containerized (e.g., via Docker) to ensure consistency between development and production environments.
+    \item \textbf{Network Isolation}: The Database Server is deployed in a \textbf{Private Subnet}, inaccessible directly from the public internet. Only the Application Server can establish a connection via a secure JDBC link.
+    \item \textbf{Scalability}: The stateless nature of the Application Tier allows for horizontal scaling (adding more server instances) behind a Load Balancer to handle peak cycling traffic.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{deployment_diagram}
+    \caption{BBP Deployment Diagram illustrating mobile-to-cloud mapping}
+    \label{fig:deployment_diagram}
+\end{figure}
+
+\paragraph{Communication Protocols}
+The nodes interact using the following protocols:
+\begin{itemize}
+    \item \textbf{HTTPS/TLS 1.3}: Used for all communication between the Mobile App and the Application Server to ensure data confidentiality and integrity.
+    \item \textbf{JDBC/SSL}: Secure connection protocol used for internal communication between the Application Server and the Database.
+    \item \textbf{REST/JSON}: The architectural style and data format used for API requests and responses.
+\end{itemize}
+\subsection{Data Design}
+The logical data structure is derived directly from the domain entities. Figure \ref{fig:domain_model} represents the relational schema, with specific focus on the persistence of \texttt{GeoPoints} which constitute the foundation of trip trajectories and bike path definitions.
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{domain_model.png}
+    \caption{Logical Data Model highlighting geospatial and user relationships}
+    \label{fig:domain_model}
+\end{figure}
+
+\subsection{Runtime View}
+This section describes the dynamic behavior of the system, illustrating how components collaborate over time and how the system manages the lifecycle of core entities.
+
+\subsubsection{Entity Lifecycles}
+The system enforces strict state transitions for trips and reports to maintain data consistency. Figure \ref{fig:state_trip} details the recording lifecycle, emphasizing the asynchronous weather enrichment phase.
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{state_trip.png}
+    \caption{State Diagram: Biking Trip Lifecycle and asynchronous data enrichment}
+    \label{fig:state_trip}
+\end{figure}
+
+Figure \ref{fig:state_info} illustrates the privacy-preserving logic for user reports, allowing users to control information visibility.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{state_info.png}
+    \caption{State Diagram: Path Information Visibility and sharing logic}
+    \label{fig:state_info}
+\end{figure}
+
+\subsubsection{Component Interaction Sequences}
+The following sequence diagrams demonstrate the runtime interaction between the Client, API Gateway, and Backend Services to fulfill primary use cases.
+
+
+
+
+\paragraph{UC1: Record a Biking Trip}
+Figure \ref{fig:seq_uc1} depicts the core value stream of the application. The sequence highlights the system's resilience to network instability and its focus on performance.
+\begin{itemize}
+    \item \textbf{Local Buffering}: As the user rides, the \textit{GPS Sensor} pushes coordinates to the \textit{Trip Manager}. Instead of transmitting each point immediately (which would drain battery and require constant connectivity), the data is buffered in the local SQLite storage.
+    \item \textbf{Atomic Upload}: Upon finishing the trip, the trajectory is serialized into a \texttt{TrajectoryDTO} and uploaded in a single HTTP POST request.
+    \item \textbf{Asynchronous Enrichment}: To provide immediate UI feedback, the backend acknowledges the upload (\texttt{HTTP 201}) immediately. The fetching of weather data from the external API is handled as a background background task, decoupling external latency from the user experience.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{UC1}
+    \caption{Sequence Diagram: Recording a Biking Trip (UC1)}
+    \label{fig:seq_uc1}
+\end{figure}
+
+\paragraph{UC2: Insert Path Information}
+The reporting flow (Figure \ref{fig:seq_uc2}) demonstrates how the system ensures high data quality and respects user privacy.
+\begin{itemize}
+    \item \textbf{Client-Side Validation}: The \textit{Report Manager} validates mandatory fields (e.g., obstacle type) before the request leaves the device, reducing unnecessary load on the server.
+    \item \textbf{Privacy Gate}: When the \textit{Path Service} receives the report, it checks the visibility flag. Private reports are stored with a flag that excludes them from the global Safety Score aggregation algorithm, ensuring that user notes remain personal if desired.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{UC2}
+    \caption{Sequence Diagram: Submitting Manual Path Reports (UC2)}
+    \label{fig:seq_uc2}
+\end{figure}
+
+\paragraph{UC3: Visualize Bike Paths}
+Figure \ref{fig:seq_uc3} illustrates the complex orchestration required to render safe paths. This is a read-heavy operation that combines external topology with internal analytics.
+\begin{itemize}
+    \item \textbf{Data Aggregation}: The \textit{API Gateway} acts as a facade, fetching geometric routes from the \textit{External Map Provider} while simultaneously querying the internal \textit{Safety Scorer} for metadata.
+    \item \textbf{Temporal Filtering}: The scoring logic queries the database for reports within a specific time window (e.g., the last 30 days) to ensure the "Safety Score" reflects current road conditions rather than outdated history.
+    \item \textbf{Visual Coding}: The result is a GeoJSON object enriched with color-coded properties (Green/Yellow/Red), which the mobile \textit{Map Engine} renders as an overlay.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{UC3}
+    \caption{Sequence Diagram: Visualizing Bike Paths with Safety Scores (UC3)}
+    \label{fig:seq_uc3}
+\end{figure}
+
+\paragraph{UC4: User Registration}
+The registration process (Figure \ref{fig:seq_uc4}) is designed to enforce security best practices from the ground up.
+\begin{itemize}
+    \item \textbf{Data Integrity}: The \textit{Auth Service} first checks the database to ensure the email is unique, returning a \texttt{409 Conflict} if it already exists.
+    \item \textbf{Secure Storage}: Passwords are never stored in plain text. The diagram explicitly shows a hashing step (using algorithms like Argon2 or BCrypt) before persistence. This ensures that even in the event of a database breach, user credentials remain protected.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{UC4}
+    \caption{Sequence Diagram: User Registration (UC4)}
+    \label{fig:seq_uc4}
+\end{figure}
+
+\paragraph{UC5: User Login}
+Figure \ref{fig:seq_uc5} details the authentication mechanism, which serves as the foundation for all protected interactions.
+\begin{itemize}
+    \item \textbf{Stateless Architecture}: Upon successful credential verification, the server generates a \textbf{JSON Web Token (JWT)}. This token contains encrypted claims (user ID, expiration) and is signed by the server's private key.
+    \item \textbf{Session Management}: By returning this token to the client, the server avoids maintaining a session state in memory (Sessionless), allowing the backend to scale horizontally without sticky sessions.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{UC5}
+    \caption{Sequence Diagram: User Login (UC5)}
+    \label{fig:seq_uc5}
+\end{figure}
+
+\paragraph{UC6: View Trip History}
+The history retrieval flow (Figure \ref{fig:seq_uc6}) is optimized for mobile data bandwidth.
+\begin{itemize}
+    \item \textbf{Two-Phase Retrieval}: To prevent fetching megabytes of GPS coordinates for the entire history list, the system implements a "Summary First" pattern. The initial request fetches only metadata (Date, Distance, Score).
+    \item \textbf{On-Demand Details}: The heavy trajectory data (GeoJSON) is fetched only when the user explicitly taps on a specific trip card. This \textit{Lazy Loading} strategy significantly reduces the initial load time and data usage.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{UC6}
+    \caption{Sequence Diagram: Accessing Personal Trip History (UC6)}
+    \label{fig:seq_uc6}
+\end{figure}
+
+\subsection{Component Interfaces}
+The BBP Backend exposes a RESTful API to the mobile client. The interfaces are designed to be stateless and resource-oriented. 
+
+\begin{table}[h!]
+    \centering
+    \begin{tabu} to \textwidth { X[1,l,p] X[0.5,c,p] X[2.5,l,p] }
+        \hline
+        \rowcolor{Blue!10} \textbf{Endpoint} & \textbf{Verb} & \textbf{Description / Payload} \\
+        \hline
+        \texttt{/auth/login} & POST & Authenticates user; returns a JWT token. \\
+        \texttt{/trips/upload} & POST & Accepts a JSON array of coordinates and metrics. \\
+        \texttt{/paths/info} & POST & Submits road status reports or obstacle alerts. \\
+        \texttt{/map/scored-paths} & GET & Returns paths within a coordinate bounding box with safety scores. \\
+        \hline
+    \end{tabu}
+    \caption{Core RESTful API Endpoints}
+\end{table}
+
+\subsection{Selected Architectural Styles and Patterns}
+
+\subsubsection{Client-Server Architecture}
+\textbf{Choice}: We adopted a 3-tier Client-Server architecture (Presentation, Application, Data).
+\textbf{Rationale}: This style allows for independent scalability. The backend can be scaled horizontally on cloud infrastructure without requiring updates to the mobile client binary. Furthermore, it centralizes sensitive business logic (like the Safety Score algorithm) to prevent client-side tampering, ensuring data integrity.
+
+\subsubsection{RESTful API}
+\textbf{Choice}: Communication is handled via stateless REST APIs over HTTPS.
+\textbf{Rationale}: REST is universally supported by mobile platforms (iOS/Android) and allows for caching of non-volatile data (e.g., map tiles), reducing bandwidth consumption for the user in outdoor environments.
+
+\subsubsection{Layered Pattern}
+\textbf{Choice}: The backend is structured into Controller, Service, and Repository layers.
+\textbf{Rationale}: This strict separation of concerns enhances maintainability. If the database technology changes (e.g., migrating from PostgreSQL to Oracle), only the Repository layer needs modification, leaving the Business Logic (Service layer) intact.
+
+\subsection{Other Design Decisions}
+
+\subsubsection{Offline-First Strategy}
+Given the outdoor nature of cycling, network connectivity is often unstable. To mitigate data loss, the system prioritizes data availability:
+\begin{itemize}
+    \item \textbf{Local Buffering}: GPS coordinates are written to a local SQLite database immediately upon capture. Synchronization with the server occurs in the background only when a stable connection is detected.
+    \item \textbf{Optimistic UI}: When a user submits a report, the UI updates immediately as if the request succeeded, while the actual network request is queued. This ensures a fluid user experience even in poor network conditions.
+\end{itemize}
+
+\subsubsection{Geospatial Data Optimization}
+To handle heavy geospatial queries efficiently, we utilize \textbf{PostGIS} indexing (R-Tree). This ensures that querying "all safe paths within a 5km radius" remains performant ($O(\log n)$) even as the dataset grows to millions of records.

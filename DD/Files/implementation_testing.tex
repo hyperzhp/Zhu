@@ -1,0 +1,64 @@
+% ===================================================================
+% SECTION 5: IMPLEMENTATION, INTEGRATION & TESTING
+% ===================================================================
+
+\subsection{Overview}
+This section outlines the strategy for the development and verification of the \textbf{Best Bike Paths (BBP)} system. The implementation follows an incremental approach, while the testing strategy adopts the "Testing Pyramid" model to ensure robustness at the unit, integration, and system levels.
+
+
+
+\subsection{Implementation Plan}
+The development process is organized into four major milestones (Sprints), focusing on delivering a minimum viable product (MVP) before expanding to complex analytical features.
+
+\subsubsection{Feature Identification and Development Phases}
+\begin{itemize}
+    \item \textbf{Sprint 1: Foundation (Backend \& Auth)}
+        \begin{itemize}
+            \item Setup PostgreSQL database with PostGIS extensions.
+            \item Implement User Controller and JWT-based authentication.
+            \item Develop the API Gateway and base routing logic.
+        \end{itemize}
+    \item \textbf{Sprint 2: Mobile Recording Infrastructure}
+        \begin{itemize}
+            \item Implement the high-frequency GPS sampling engine on the Mobile Client.
+            \item Develop local SQLite persistence for the "Offline-First" strategy.
+            \item Create basic Map dashboard using external tile providers.
+        \end{itemize}
+    \item \textbf{Sprint 3: Integration \& External Services}
+        \begin{itemize}
+            \item Implement the asynchronous Trip Service to handle trajectory uploads.
+            \item Integrate with the External Weather API for automated enrichment.
+            \item Enable the Path Reporter module for manual status submissions.
+        \end{itemize}
+    \item \textbf{Sprint 4: Analytics \& UI Polishing}
+        \begin{itemize}
+            \item Develop the Path Safety Scorer algorithm on the backend.
+            \item Implement the Map Visualizer overlays for scored paths.
+            \item Final UX/UI refinement and end-to-end performance optimization.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Component Integration and Testing}
+Integration testing focuses on the interaction between the Mobile Client and the Cloud Backend, as well as the connectivity with external map and weather providers.
+
+\begin{itemize}
+    \item \textbf{API Integration}: Automated tests (e.g., using Postman/Newman) to verify that the Backend correctly parses complex GeoJSON trajectories sent by the client.
+    \item \textbf{Service Resiliency}: Testing the system's behavior when external APIs (Weather/Map) are slow or unreachable, ensuring the core trip-saving logic remains functional.
+    \item \textbf{Data Consistency}: Verifying that private/public visibility toggles correctly filter data in the database during cross-module queries.
+\end{itemize}
+
+\subsection{System Testing}
+System testing evaluates the BBP application in a real-world environment to ensure it meets all functional and non-functional requirements defined in the RASD.
+
+\subsubsection{Functional Correctness}
+Field tests will be conducted in urban environments (e.g., central Milan) to verify that recorded distances match reference odometers and that obstacles are reported at the correct geographic coordinates.
+
+\subsubsection{Non-Functional Performance Testing}
+\begin{itemize}
+    \item \textbf{GPS Accuracy \& Battery Consumption}: Monitoring the impact of continuous GPS polling (1Hz) on device battery life over a 2-hour cycling session.
+    \item \textbf{Concurrency}: Simulating multiple users uploading trips simultaneously to test the backend's response time and database locking behavior.
+    \item \textbf{Recovery}: Simulating app crashes during a recording session to verify that the Local Cache Manager correctly recovers the partial trip data upon restart.
+\end{itemize}
+
+\subsection{Additional Specifications on Testing}
+Due to the safety-critical nature of "Best Bike Paths," particular emphasis is placed on \textbf{Geospatial Accuracy Testing}. This involves validating that the Map Engine correctly aligns the recorded GPS points with the underlying road network topology (Map Matching) to prevent misleading safety score visualizations.
