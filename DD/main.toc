@@ -1,0 +1,55 @@
+\contentsline {section}{\numberline {1}Introduction}{6}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Purpose}{6}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Scope}{6}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Definitions, Acronyms, Abbreviations}{6}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Revision History}{6}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Reference Documents}{7}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Document Structure}{7}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Architectural Design}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Overview}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Component View}{8}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Key Component Responsibilities}{8}{subsubsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.3}Deployment View}{9}{subsection.2.3}%
+\contentsline {paragraph}{Communication Protocols}{10}{section*.4}%
+\contentsline {subsection}{\numberline {2.4}Data Design}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Runtime View}{11}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Entity Lifecycles}{11}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Component Interaction Sequences}{13}{subsubsection.2.5.2}%
+\contentsline {paragraph}{UC1: Record a Biking Trip}{13}{section*.5}%
+\contentsline {paragraph}{UC2: Insert Path Information}{13}{section*.6}%
+\contentsline {paragraph}{UC3: Visualize Bike Paths}{14}{section*.7}%
+\contentsline {paragraph}{UC4: User Registration}{15}{section*.8}%
+\contentsline {paragraph}{UC5: User Login}{16}{section*.9}%
+\contentsline {paragraph}{UC6: View Trip History}{16}{section*.10}%
+\contentsline {subsection}{\numberline {2.6}Component Interfaces}{17}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Selected Architectural Styles and Patterns}{17}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {2.7.1}Client-Server Architecture}{17}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.2}RESTful API}{18}{subsubsection.2.7.2}%
+\contentsline {subsubsection}{\numberline {2.7.3}Layered Pattern}{18}{subsubsection.2.7.3}%
+\contentsline {subsection}{\numberline {2.8}Other Design Decisions}{18}{subsection.2.8}%
+\contentsline {subsubsection}{\numberline {2.8.1}Offline-First Strategy}{18}{subsubsection.2.8.1}%
+\contentsline {subsubsection}{\numberline {2.8.2}Geospatial Data Optimization}{18}{subsubsection.2.8.2}%
+\contentsline {section}{\numberline {3}User Interface Design}{19}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Design Rationale}{19}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Interaction Flow and Navigation}{19}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Functional Screen Descriptions}{19}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Main Map Dashboard}{19}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Trip Recording Interface}{20}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Path Reporting Interface}{20}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}Accessibility and Safety Considerations}{20}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Requirements Traceability}{21}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Traceability Overview}{21}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Traceability Matrix}{21}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Coverage Analysis}{21}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Implementation, Integration \& Testing}{23}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Overview}{23}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Implementation Plan}{23}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Feature Identification and Development Phases}{23}{subsubsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.3}Component Integration and Testing}{23}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}System Testing}{24}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Functional Correctness}{24}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Non-Functional Performance Testing}{24}{subsubsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.5}Additional Specifications on Testing}{24}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Effort Spent}{25}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Individual Contribution}{25}{subsection.6.1}%
+\contentsline {section}{References}{26}{table.4}%
