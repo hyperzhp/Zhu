@@ -1,56 +1,57 @@
-% ===================================================================
+% =========================================================
 % SECTION 3: USER INTERFACE DESIGN
-% ===================================================================
+% =========================================================
+
+% 注意：不要在 main.tex 再次写 \section{User Interface Design}
+\section{User Interface Design}
 
 \subsection{Design Rationale}
-The User Interface (UI) of the \textbf{Best Bike Paths (BBP)} application is designed following the "Situational Design" paradigm. Recognizing that the primary users (cyclists) will interact with the application in diverse outdoor conditions—including direct sunlight, high-speed movement, and potential environmental distractions—the UI prioritizes \textbf{readability}, \textbf{efficiency}, and \textbf{safety}.
-
-The following principles guide the interface design:
+The User Interface (UI) of the \textbf{Best Bike Paths (BBP)} application follows the \textbf{"Situational Design"} paradigm. Recognizing that cyclists interact with the app outdoors in Milan's busy streets, the design prioritizes:
 \begin{itemize}
-    \item \textbf{High Contrast \& Legibility}: Utilizing a high-contrast color palette (primarily deep blues and stark whites) to ensure map elements and safety scores are visible under varying lighting conditions.
-    \item \textbf{One-Handed Interaction}: Key actionable elements, such as the "Start/Stop Recording" and "Quick Report" buttons, are placed within the "Natural Thumb Zone" (bottom 30\% of the screen) to facilitate safe usage while stationary or during brief stops.
-    \item \textbf{Minimal Cognitive Load}: Information density is kept low during active recording, displaying only mission-critical data (speed, distance, and immediate path alerts).
+    \item \textbf{Context-Aware Visibility}: As seen in the Recording mode, the interface switches to a high-contrast dark theme to ensure legibility under direct sunlight.
+    \item \textbf{Thumb Zone Navigation}: Critical actions (Start/Stop) are oversized and placed in the bottom 30\% of the screen for safe one-handed interaction.
+    \item \textbf{Safety-First Alerts}: The system uses distinct color coding (Yellow/Red) to warn users of specific hazards like tram tracks.
 \end{itemize}
 
-\subsection{Interaction Flow and Navigation}
-The application utilizes a \textbf{Flat Navigation} structure to ensure users can reach core features with a maximum of two taps from the home screen.
+\subsection{Core Interaction Flow}
+The figures below illustrate the primary user journey for a commute from the university campus to the city center.
 
+\begin{figure}[H]
+    \centering
+    % 第一张图
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{ui1.png}
+        \vspace{5pt}
+        \textbf{(A) Dashboard} % 使用加粗文本代替 \caption，避免产生多余编号
+    \end{minipage}
+    \hfill
+    % 第二张图
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{ui2.png}
+        \vspace{5pt}
+        \textbf{(B) Recording}
+    \end{minipage}
+    \hfill
+    % 第三张图
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{ui3.png}
+        \vspace{5pt}
+        \textbf{(C) Summary}
+    \end{minipage}
+
+    \vspace{10pt}
+    \caption{Core Workflow: (A) Trip Initiation at \textbf{Polimi}, (B) Active monitoring with \textbf{Tram Alerts}, (C) Trip Completion at \textbf{Duomo}.}
+    \label{fig:ui_flow} % 这个标签现在代表整个图组
+\end{figure}
+
+\subsection{Screen Descriptions}
 \begin{enumerate}
-    \item \textbf{Map-Centric Dashboard}: Upon successful authentication, the user is presented with a full-screen map interface. This acts as the central hub for exploration and activity initiation.
-    \item \textbf{Recording Overlay}: When a trip is initiated, the dashboard transitions into an "Active Mode." The map persists in the background, but a semi-transparent overlay displays real-time telemetry.
-    \item \textbf{Modal Reporting System}: To submit path information, a bottom-sheet modal is utilized. This allows the user to categorize road conditions (Optimal, Sufficient, Poor) via large, icon-based buttons, minimizing the need for text input.
-    \item \textbf{Dynamic Feedback}: The UI provides haptic and visual confirmation for every successful data sync or report submission, acknowledging the "Offline-First" nature of the system.
+    \item \textbf{Dashboard}: As shown in \textbf{Figure \ref{fig:ui_flow} (A)}, the central hub automatically detects the user's location at \textit{Piazza Leonardo da Vinci} and suggests the safest route to \textit{Duomo}.
+
+    \item \textbf{Active Recording}: During the ride (\textbf{Figure \ref{fig:ui_flow} (B)}), the UI minimizes distractions. It features a large speedometer and dynamic alerts. In this scenario, the app has detected upcoming \textbf{tram tracks} on \textit{Corso Venezia}.
+
+    \item \textbf{Summary View}: Upon arrival (\textbf{Figure \ref{fig:ui_flow} (C)}), the user receives a "Safety Score" (94/100). The route visualization uses a gradient to indicate safe vs. caution zones.
 \end{enumerate}
-
-\subsection{Functional Screen Descriptions}
-
-\subsubsection{Main Map Dashboard}
-The dashboard integrates several critical UI components:
-\begin{itemize}
-    \item \textbf{Search Bar}: Located at the top for destination input.
-    \item \textbf{Floating Action Button (FAB)}: A prominent "Start Trip" button situated at the bottom-center.
-    \item \textbf{Safety Layers}: A toggleable layer that color-codes road segments (Green, Yellow, Red) based on the Safety Scoring Engine results.
-\end{itemize}
-
-\subsubsection{Trip Recording Interface}
-During an active session, the interface undergoes a contextual transformation:
-\begin{itemize}
-    \item \textbf{Telemetry HUD}: Displays current speed (km/h) and elapsed distance in high-visibility sans-serif fonts.
-    \item \textbf{Safety Alerts}: Persistent icons that appear if the user is approaching a segment with a low safety score or reported obstacles.
-    \item \textbf{Finalization View}: After stopping a trip, the user is presented with a summary card showing the route taken, average speed, and a status indicator for the asynchronous weather data fetch.
-\end{itemize}
-
-\subsubsection{Path Reporting Interface}
-The reporting flow is designed to be completed in less than 10 seconds:
-\begin{itemize}
-    \item \textbf{Category Grid}: A 3x2 grid of predefined obstacle types (e.g., Pothole, Heavy Traffic, Blocked Lane).
-    \item \textbf{Visibility Toggle}: A simple switch to decide whether the information should be shared publicly to update the global safety score or kept as a private note.
-\end{itemize}
-
-\subsection{Accessibility and Safety Considerations}
-To comply with modern accessibility standards, the BBP application supports:
-\begin{itemize}
-    \item \textbf{Dynamic Type}: Interface elements scale according to system-wide font size settings.
-    \item \textbf{Voice Feedback}: Optional audio cues for path safety alerts, allowing cyclists to receive information without glancing at the screen.
-    \item \textbf{Safe-Mode Restriction}: Certain non-essential features (e.g., detailed trip history browsing) are discouraged or simplified when the GPS sensor detects speeds above a certain threshold (e.g., 5 km/h).
-\end{itemize}

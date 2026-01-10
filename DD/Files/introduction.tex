@@ -1,6 +1,3 @@
-% ===================================================================
-% SECTION 1: INTRODUCTION
-% ===================================================================
 
 \subsection{Purpose}
 The purpose of this Design Document (DD) is to provide a comprehensive technical specification for the \textbf{Best Bike Paths (BBP)} system. While the Requirement Analysis and Specification Document (RASD) focused on the functional and non-functional requirements from a user's perspective, this document describes the software architecture, the decomposition into components, and the design choices made to satisfy those requirements.
@@ -27,17 +24,46 @@ The BBP system is a modular platform designed to support individual cyclists. Th
 \end{itemize}
 
 \subsection{Revision History}
-\begin{table}[h!]
+\begin{table}[H]
     \centering
-    \begin{tabu} to \textwidth { X[0.4,l,p] X[0.6,l,p] X[2,l,p] }
+    \begin{tabular}{|l|l|p{8cm}|}
         \hline
-        \textbf{Version} & \textbf{Date} & \textbf{Description} \\
-        \hline
-        1.0 & \today & Initial version of the Design Document. \\
-        \hline
-    \end{tabu}
+        \textbf{Version} & \textbf{Date}   & \textbf{Description}                                                                                                                                                             \\ \hline
+        1.0              & January 8, 2026 & Initial submission of the Design Document.                                                                                                                                       \\ \hline
+        2.0              & January 9, 2026 & \textbf{Major Revision (Post-Review)}: Comprehensive upgrade of architectural diagrams, UI fidelity, and algorithm specifications. Detailed changes are listed in Section 1.4.1. \\ \hline
+    \end{tabular}
     \caption{Revision history of the DD}
+    \label{tab:revision_history}
 \end{table}
+
+\subsubsection{Changelog: Enhancements in Version 2.0}
+This version represents a significant iteration over the initial submission, focusing on technical depth and architectural clarity. The key improvements include:
+
+\begin{itemize}
+    \item \textbf{Architectural Refinement}:
+          \begin{itemize}
+              \item Upgraded \textbf{Component} and \textbf{Deployment Diagrams} to include specific protocols (HTTPS, JDBC), port numbers, and execution environments (Docker), replacing generic blocks with industry-standard notations.
+              \item Introduced explicit interfaces (APIs) and defined the "Offline-First" synchronization logic.
+          \end{itemize}
+
+    \item \textbf{Advanced Runtime Logic}:
+          \begin{itemize}
+              \item Rewrote all \textbf{Sequence Diagrams (UC1-UC6)} to include error handling (\texttt{alt} blocks), asynchronous processing (\texttt{par/group}), and security validations (\texttt{ref} to UC5), moving beyond simple "happy paths".
+              \item Added a detailed \textbf{State Diagram} covering the complex lifecycle of the "Safety Score" visibility.
+          \end{itemize}
+
+    \item \textbf{High-Fidelity User Interface}:
+          \begin{itemize}
+              \item Replaced wireframes with \textbf{High-Fidelity Mockups} featuring real Milan geospatial data (Polimi $\rightarrow$ Duomo route).
+              \item Implemented "Situational Design" principles with high-contrast modes and specific safety alerts (e.g., Tram Tracks).
+          \end{itemize}
+
+    \item \textbf{Technical Specifications}:
+          \begin{itemize}
+              \item Added the \textbf{Safety Score Algorithm} pseudocode (Section 2.9) to mathematically define how user reports are aggregated.
+              \item Included specific JSON Data Contracts for the core RESTful endpoints.
+          \end{itemize}
+\end{itemize}
 
 \subsection{Reference Documents}
 \begin{itemize}
@@ -53,4 +79,28 @@ The document is organized into the following main sections:
     \item \textbf{Section 3 - User Interface Design}: Describes the user experience and provides mockups for the mobile application.
     \item \textbf{Section 4 - Requirements Traceability}: Maps each functional requirement from the RASD to specific design elements in the DD.
     \item \textbf{Section 5 - Implementation, Integration \& Testing}: Outlines the development plan and the strategy for verifying system correctness.
+\end{itemize}
+
+\section*{Appendix: Use of AI Tools}
+In accordance with the academic integrity guidelines, the following AI tools were utilized to assist in the drafting and refinement of this Design Document.
+
+\subsection*{1. Text Refinement \& Content Structuring}
+\begin{itemize}
+    \item \textbf{Tool}: Large Language Models (ChatGPT-4 / Gemini)
+    \item \textbf{Usage}: Used to refine the technical English phrasing of the "Architectural Design" and "Design Rationale" sections to ensure professional tone and clarity.
+    \item \textbf{Prompt Example}: \textit{"Refine the following description of the Offline-First strategy to highlight data consistency and synchronization logic."}
+\end{itemize}
+
+\subsection*{2. Diagram Generation Code}
+\begin{itemize}
+    \item \textbf{Tool}: LLM for PlantUML Generation
+    \item \textbf{Usage}: Generated the initial PlantUML code structures for Sequence Diagrams (UC1-UC6) and the Component Diagram based on the logical flow descriptions.
+    \item \textbf{Prompt Example}: \textit{"Generate a PlantUML sequence diagram for a User Login flow implementing JWT stateless authentication with error handling."}
+\end{itemize}
+
+\subsection*{3. User Interface Prototyping}
+\begin{itemize}
+    \item \textbf{Tool}: AI-assisted Code Generation (Tailwind CSS / HTML)
+    \item \textbf{Usage}: Generated the HTML/CSS code to visualize the high-fidelity UI mockups for the Dashboard and Recording screens, which were then rendered and included as figures.
+    \item \textbf{Rationale}: This allowed for rapid prototyping of the "Situational Design" paradigm without manual pixel-pushing in vector tools.
 \end{itemize}

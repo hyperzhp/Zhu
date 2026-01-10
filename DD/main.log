@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.3)  8 JAN 2026 21:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.12.3)  10 JAN 2026 01:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -329,7 +329,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip74
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 63.
+Package hyperref Info: Option `colorlinks' set `true' on input line 59.
  (d:/texlive/2025/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count317
@@ -349,7 +349,7 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 ) (d:/texlive/2025/texmf-dist/tex/latex/ltablex/ltablex.sty
 Package: ltablex 2014/08/13 v1.1 Modified tabularx
 )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 76.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 72.
  (d:/texlive/2025/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (d:/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -358,24 +358,24 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -430,39 +430,39 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (d:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 76.
+Package hyperref Info: Link coloring ON on input line 72.
  (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 83.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 79.
  (d:/texlive/2025/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 83.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 79.
  (d:/texlive/2025/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 83.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 79.
  (d:/texlive/2025/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 83.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 79.
  (d:/texlive/2025/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 83.
+(Font)              <10.95> on input line 79.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 83.
+(Font)              <8> on input line 79.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 83.
+(Font)              <6> on input line 79.
 File: Images/PolimiLogo.png Graphic file (type png)
 <use Images/PolimiLogo.png>
-Package pdftex.def Info: Images/PolimiLogo.png  used on input line 87.
+Package pdftex.def Info: Images/PolimiLogo.png  used on input line 83.
 (pdftex.def)             Requested size: 202.75699pt x 62.7342pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
@@ -513,10 +513,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [5] (./Files/introduction.tex
-Overfull \hbox (1.97726pt too wide) in paragraph at lines 45--46
-[]\T1/lmr/m/n/10.95 Haipeng Zhu, \T1/lmr/m/it/10.95 Best Bike Paths - Re-quire-ment Anal-y-sis and Spec-i-fi-ca-tion Doc-u-ment (RASD)\T1/lmr/m/n/10.95 ,
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -530,8 +526,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.46     \item I
-                EEE Std 1016-2009, \emph{IEEE Standard for Information Techn...])
+l.43     \item \textbf
+                      {Architectural Refinement}:]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 51.
+ (d:/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Overfull \hbox (6.39911pt too wide) in paragraph at lines 51--52
+[]\T1/lmr/m/n/10.95 Rewrote all \T1/lmr/bx/n/10.95 Se-quence Di-a-grams (UC1-UC6) \T1/lmr/m/n/10.95 to in-clude er-ror han-dling (\T1/lmtt/m/n/10.95 alt \T1/lmr/m/n/10.95 blocks),
+ []
+
+
+Overfull \hbox (1.97726pt too wide) in paragraph at lines 71--72
+[]\T1/lmr/m/n/10.95 Haipeng Zhu, \T1/lmr/m/it/10.95 Best Bike Paths - Re-quire-ment Anal-y-sis and Spec-i-fi-ca-tion Doc-u-ment (RASD)\T1/lmr/m/n/10.95 ,
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -539,11 +548,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[7] (./Files/architectural_design.tex
-<Images/component_diagram.png, id=312, 767.86874pt x 711.65875pt>
+[7{d:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[8] (./Files/architectural_design.tex
+<Images/component_diagram.png, id=315, 767.86874pt x 711.65875pt>
 File: Images/component_diagram.png Graphic file (type png)
 <use Images/component_diagram.png>
-Package pdftex.def Info: Images/component_diagram.png  used on input line 35.
+Package pdftex.def Info: Images/component_diagram.png  used on input line 31.
 (pdftex.def)             Requested size: 455.24411pt x 421.92738pt.
 
 
@@ -553,13 +570,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[8
+[9
 
 ]
-<Images/deployment_diagram.png, id=319, 830.10126pt x 837.1275pt>
+<Images/deployment_diagram.png, id=323, 830.10126pt x 837.1275pt>
 File: Images/deployment_diagram.png Graphic file (type png)
 <use Images/deployment_diagram.png>
-Package pdftex.def Info: Images/deployment_diagram.png  used on input line 51.
+Package pdftex.def Info: Images/deployment_diagram.png  used on input line 47.
 (pdftex.def)             Requested size: 386.96027pt x 390.23105pt.
 
 Underfull \vbox (badness 1603) has occurred while \output is active []
@@ -572,20 +589,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[9
+[10
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.55 
+l.51 
       <./Images/component_diagram.png>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 64.
- (d:/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-<Images/domain_model.png, id=327, 832.10875pt x 543.02875pt>
+<Images/domain_model.png, id=330, 832.10875pt x 543.02875pt>
 File: Images/domain_model.png Graphic file (type png)
 <use Images/domain_model.png>
-Package pdftex.def Info: Images/domain_model.png  used on input line 70.
+Package pdftex.def Info: Images/domain_model.png  used on input line 66.
 (pdftex.def)             Requested size: 432.48051pt x 282.2357pt.
 
 Underfull \vbox (badness 1184) has occurred while \output is active []
@@ -598,16 +611,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[10
+[11
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.74 
+l.70 
       <./Images/deployment_diagram.png>]
-<Images/state_trip.png, id=336, 488.82625pt x 537.00626pt>
+<Images/state_trip.png, id=338, 488.82625pt x 537.00626pt>
 File: Images/state_trip.png Graphic file (type png)
 <use Images/state_trip.png>
-Package pdftex.def Info: Images/state_trip.png  used on input line 85.
+Package pdftex.def Info: Images/state_trip.png  used on input line 81.
 (pdftex.def)             Requested size: 364.19667pt x 400.09883pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -620,16 +633,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[11
+[12
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.89 
+l.85 
       <./Images/domain_model.png>]
-<Images/state_info.png, id=343, 884.30376pt x 402.50375pt>
+<Images/state_info.png, id=345, 884.30376pt x 402.50375pt>
 File: Images/state_info.png Graphic file (type png)
 <use Images/state_info.png>
-Package pdftex.def Info: Images/state_info.png  used on input line 94.
+Package pdftex.def Info: Images/state_info.png  used on input line 90.
 (pdftex.def)             Requested size: 318.66948pt x 145.04863pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -642,25 +655,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[12
+[13
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.105 \paragraph
+l.101 \paragraph
                 {UC1: Record a Biking Trip}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.105 \paragraph
+l.101 \paragraph
                 {UC1: Record a Biking Trip} <./Images/state_trip.png> <./Images/state_info.png>]
-Overfull \hbox (1.1909pt too wide) in paragraph at lines 109--110
+Overfull \hbox (1.1909pt too wide) in paragraph at lines 105--106
 []\T1/lmr/bx/n/10.95 Atomic Up-load\T1/lmr/m/n/10.95 : Upon fin-ish-ing the trip, the tra-jec-tory is se-ri-al-ized into a \T1/lmtt/m/n/10.95 TrajectoryDTO
  []
 
-<Images/UC1.png, id=351, 1617.04124pt x 1155.31625pt>
+<Images/UC1.png, id=354, 1617.04124pt x 1155.31625pt>
 File: Images/UC1.png Graphic file (type png)
 <use Images/UC1.png>
-Package pdftex.def Info: Images/UC1.png  used on input line 115.
+Package pdftex.def Info: Images/UC1.png  used on input line 111.
 (pdftex.def)             Requested size: 432.48051pt x 308.97794pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -669,21 +682,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[13
+[14
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.125 \end{itemize}
+l.121 \end{itemize}
                     <./Images/UC1.png>]
-<Images/UC2.png, id=361, 1392.20125pt x 840.13875pt>
+<Images/UC2.png, id=363, 1392.20125pt x 840.13875pt>
 File: Images/UC2.png Graphic file (type png)
 <use Images/UC2.png>
-Package pdftex.def Info: Images/UC2.png  used on input line 129.
+Package pdftex.def Info: Images/UC2.png  used on input line 125.
 (pdftex.def)             Requested size: 432.48051pt x 260.97874pt.
-<Images/UC3.png, id=363, 1521.685pt x 668.4975pt>
+<Images/UC3.png, id=365, 1521.685pt x 668.4975pt>
 File: Images/UC3.png Graphic file (type png)
 <use Images/UC3.png>
-Package pdftex.def Info: Images/UC3.png  used on input line 144.
+Package pdftex.def Info: Images/UC3.png  used on input line 140.
 (pdftex.def)             Requested size: 432.48051pt x 189.99333pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -696,16 +709,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[14
+[15
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.148 
+l.144 
        <./Images/UC2.png>]
-<Images/UC4.png, id=371, 1281.78876pt x 884.30376pt>
+<Images/UC4.png, id=373, 1281.78876pt x 884.30376pt>
 File: Images/UC4.png Graphic file (type png)
 <use Images/UC4.png>
-Package pdftex.def Info: Images/UC4.png  used on input line 158.
+Package pdftex.def Info: Images/UC4.png  used on input line 154.
 (pdftex.def)             Requested size: 432.48051pt x 298.36543pt.
 
 
@@ -715,26 +728,26 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[15
+[16
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.166     \item \textbf
+l.162     \item \textbf
                        {Stateless Architecture}: Upon successful credential ...
 pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.166     \item \textbf
+l.162     \item \textbf
                        {Stateless Architecture}: Upon successful credential ... <./Images/UC3.png> <./Images/UC4.png>]
-<Images/UC5.png, id=380, 1206.5075pt x 763.85374pt>
+<Images/UC5.png, id=382, 1206.5075pt x 763.85374pt>
 File: Images/UC5.png Graphic file (type png)
 <use Images/UC5.png>
-Package pdftex.def Info: Images/UC5.png  used on input line 172.
+Package pdftex.def Info: Images/UC5.png  used on input line 168.
 (pdftex.def)             Requested size: 432.48051pt x 273.79828pt.
-<Images/UC6.png, id=382, 1210.5225pt x 801.99625pt>
+<Images/UC6.png, id=384, 1210.5225pt x 801.99625pt>
 File: Images/UC6.png Graphic file (type png)
 <use Images/UC6.png>
-Package pdftex.def Info: Images/UC6.png  used on input line 186.
+Package pdftex.def Info: Images/UC6.png  used on input line 182.
 (pdftex.def)             Requested size: 432.48051pt x 286.52792pt.
 
 Underfull \vbox (badness 4927) has occurred while \output is active []
@@ -747,11 +760,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[16
+[17
 pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.190 
+l.186 
        <./Images/UC5.png>]
 Underfull \vbox (badness 2050) has occurred while \output is active []
 
@@ -763,16 +776,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[17
+[18
 pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.218 
+l.215 
       
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.218 
+l.215 
        <./Images/UC6.png>])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -781,7 +794,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[18{d:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{d:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}] (./Files/user_interface.tex
+[19{d:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{d:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}] (./Files/user_interface.tex
+<Images/ui1.png, id=404, 240.9pt x 517.07465pt>
+File: Images/ui1.png Graphic file (type png)
+<use Images/ui1.png>
+Package pdftex.def Info: Images/ui1.png  used on input line 24.
+(pdftex.def)             Requested size: 145.68144pt x 312.70094pt.
+<Images/ui2.png, id=405, 243.05089pt x 521.37643pt>
+File: Images/ui2.png Graphic file (type png)
+<use Images/ui2.png>
+Package pdftex.def Info: Images/ui2.png  used on input line 32.
+(pdftex.def)             Requested size: 145.68144pt x 312.51004pt.
+<Images/ui3.png, id=406, 238.31892pt x 515.35393pt>
+File: Images/ui3.png Graphic file (type png)
+<use Images/ui3.png>
+Package pdftex.def Info: Images/ui3.png  used on input line 40.
+(pdftex.def)             Requested size: 145.68144pt x 315.03384pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -789,9 +818,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[19
+[20
 
-])
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.54     \item \textbf
+                      {Active Recording}: During the ride (\textbf{Figure \r... <./Images/ui1.png> <./Images/ui2.png> <./Images/ui3.png>])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -799,53 +833,53 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[20] (./Files/requirements_traceability.tex
-Overfull \hbox (1.63033pt too wide) in alignment at lines 13--17
+[21] (./Files/requirements_traceability.tex
+Overfull \hbox (1.63033pt too wide) in alignment at lines 10--14
  [] [] [] [] 
  []
 
 
-Overfull \hbox (1.63033pt too wide) in alignment at lines 17--21
+Overfull \hbox (1.63033pt too wide) in alignment at lines 14--18
  [] [] [] [] 
  []
 
 
-Overfull \hbox (1.63033pt too wide) in alignment at lines 21--23
+Overfull \hbox (1.63033pt too wide) in alignment at lines 18--20
  [] [] [] [] 
  []
 
 
-Underfull \hbox (badness 4024) in paragraph at lines 26--26
+Underfull \hbox (badness 4024) in paragraph at lines 23--23
 []|\T1/lmr/m/n/10.95 Mobile: Trip Man-ager,
  []
 
 
-Underfull \hbox (badness 4403) in paragraph at lines 27--27
+Underfull \hbox (badness 4403) in paragraph at lines 24--24
 []|\T1/lmr/m/n/10.95 Calculate trip statis-tics (dis-
  []
 
 
-Underfull \hbox (badness 4024) in paragraph at lines 27--27
+Underfull \hbox (badness 4024) in paragraph at lines 24--24
 []|\T1/lmr/m/n/10.95 Mobile: Trip Man-ager;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 28--28
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
 []|\T1/lmr/m/n/10.95 Server: Trip Ser-vice,
  []
 
 
-Underfull \hbox (badness 2237) in paragraph at lines 30--30
+Underfull \hbox (badness 2237) in paragraph at lines 27--27
 []|\T1/lmr/m/n/10.95 Mobile: Path Re-porter;
  []
 
 
-Underfull \hbox (badness 1097) in paragraph at lines 33--33
+Underfull \hbox (badness 1097) in paragraph at lines 30--30
 []|\T1/lmr/m/n/10.95 Server: Path Con-troller,
  []
 
 
-Overfull \hbox (1.63033pt too wide) in alignment at lines 23--37
+Overfull \hbox (1.63033pt too wide) in alignment at lines 20--34
  [] [] [] [] 
  []
 
@@ -856,7 +890,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[21
+[22
 
 ])
 
@@ -866,7 +900,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[22] (./Files/implementation_testing.tex
+[23] (./Files/implementation_testing.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -874,7 +908,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[23
+[24
 
 ])
 
@@ -884,7 +918,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[24] (./Files/effort.tex)
+[25] (./Files/effort.tex)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -892,7 +926,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[25
+[26
 
 ] (./main.bbl
 
@@ -906,7 +940,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[26
+[27
 
 ] (./main.aux)
  ***********
@@ -914,21 +948,21 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-14>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: CBF7637F11AAEB368E98E88DD3736D65;8200.
+(rerunfilecheck)             Checksum: DE0C38E99D34CC15FBE1F7078F4A54E5;7700.
  ) 
 Here is how much of TeX's memory you used:
- 12169 strings out of 467538
- 189599 string characters out of 5423725
- 638057 words of memory out of 5000000
- 40773 multiletter control sequences out of 15000+600000
+ 12205 strings out of 467538
+ 190254 string characters out of 5423725
+ 638244 words of memory out of 5000000
+ 40805 multiletter control sequences out of 15000+600000
  672085 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,20n,84p,577b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (26 pages, 690180 bytes).
+<d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><d:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (27 pages, 1125425 bytes).
 PDF statistics:
- 517 PDF objects out of 1000 (max. 8388607)
- 446 compressed objects within 5 object streams
- 104 named destinations out of 1000 (max. 500000)
- 445 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 529 PDF objects out of 1000 (max. 8388607)
+ 452 compressed objects within 5 object streams
+ 107 named destinations out of 1000 (max. 500000)
+ 444 words of extra memory for PDF output out of 10000 (max. 10000000)
 

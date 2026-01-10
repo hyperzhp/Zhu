@@ -1,9 +1,5 @@
-% ===================================================================
-% SECTION 2: ARCHITECTURAL DESIGN
-% ===================================================================
-
 \subsection{Overview}
-The \textbf{Best Bike Paths (BBP)} system is engineered as a distributed application adhering to the \textbf{3-tier Client-Server architectural pattern}. This choice is driven by the need to decouple the high-frequency interaction logic (mobile client) from the heavy analytical processing (backend). 
+The \textbf{Best Bike Paths (BBP)} system is engineered as a distributed application adhering to the \textbf{3-tier Client-Server architectural pattern}. This choice is driven by the need to decouple the high-frequency interaction logic (mobile client) from the heavy analytical processing (backend).
 
 The system architecture is organized into the following logical layers:
 \begin{itemize}
@@ -18,16 +14,16 @@ The static decomposition of the system is illustrated in Figure \ref{fig:compone
 \subsubsection{Key Component Responsibilities}
 \begin{itemize}
     \item \textbf{Mobile Client}:
-    \begin{itemize}
-        \item \textbf{Trip Manager}: The central controller for the recording session. It implements a 1Hz sampling loop and manages the transition between "Recording", "Paused", and "Stopped" states.
-        \item \textbf{Local Cache}: A lightweight SQLite database that acts as a buffer for trip data, ensuring no data is lost during temporary network outages.
-    \end{itemize}
+          \begin{itemize}
+              \item \textbf{Trip Manager}: The central controller for the recording session. It implements a 1Hz sampling loop and manages the transition between "Recording", "Paused", and "Stopped" states.
+              \item \textbf{Local Cache}: A lightweight SQLite database that acts as a buffer for trip data, ensuring no data is lost during temporary network outages.
+          \end{itemize}
     \item \textbf{Backend Server}:
-    \begin{itemize}
-        \item \textbf{API Gateway}: The single entry point for all client requests. It handles SSL termination, rate limiting, and routes requests to the appropriate internal controller.
-        \item \textbf{Safety Scorer}: An analytical component that runs scheduled jobs to update the safety index of road segments based on recent user reports (e.g., last 30 days).
-        \item \textbf{Weather Integrator}: A specialized adapter that communicates with external Meteorological APIs asynchronously to enrich trip data without blocking the main response thread.
-    \end{itemize}
+          \begin{itemize}
+              \item \textbf{API Gateway}: The single entry point for all client requests. It handles SSL termination, rate limiting, and routes requests to the appropriate internal controller.
+              \item \textbf{Safety Scorer}: An analytical component that runs scheduled jobs to update the safety index of road segments based on recent user reports (e.g., last 30 days).
+              \item \textbf{Weather Integrator}: A specialized adapter that communicates with external Meteorological APIs asynchronously to enrich trip data without blocking the main response thread.
+          \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
@@ -189,22 +185,23 @@ The history retrieval flow (Figure \ref{fig:seq_uc6}) is optimized for mobile da
 \end{figure}
 
 \subsection{Component Interfaces}
-The BBP Backend exposes a RESTful API to the mobile client. The interfaces are designed to be stateless and resource-oriented. 
+The BBP Backend exposes a RESTful API to the mobile client. The interfaces are designed to be stateless and resource-oriented.
 
 \begin{table}[h!]
     \centering
     \begin{tabu} to \textwidth { X[1,l,p] X[0.5,c,p] X[2.5,l,p] }
         \hline
-        \rowcolor{Blue!10} \textbf{Endpoint} & \textbf{Verb} & \textbf{Description / Payload} \\
+        \rowcolor{Blue!10} \textbf{Endpoint} & \textbf{Verb} & \textbf{Description / Payload}                                     \\
         \hline
-        \texttt{/auth/login} & POST & Authenticates user; returns a JWT token. \\
-        \texttt{/trips/upload} & POST & Accepts a JSON array of coordinates and metrics. \\
-        \texttt{/paths/info} & POST & Submits road status reports or obstacle alerts. \\
-        \texttt{/map/scored-paths} & GET & Returns paths within a coordinate bounding box with safety scores. \\
+        \texttt{/auth/login}                 & POST          & Authenticates user; returns a JWT token.                           \\
+        \texttt{/trips/upload}               & POST          & Accepts a JSON array of coordinates and metrics.                   \\
+        \texttt{/paths/info}                 & POST          & Submits road status reports or obstacle alerts.                    \\
+        \texttt{/map/scored-paths}           & GET           & Returns paths within a coordinate bounding box with safety scores. \\
         \hline
     \end{tabu}
     \caption{Core RESTful API Endpoints}
 \end{table}
+
 
 \subsection{Selected Architectural Styles and Patterns}
 
